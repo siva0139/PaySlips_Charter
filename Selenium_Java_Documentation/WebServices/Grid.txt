@@ -1,0 +1,24 @@
+http://toolsqa.com/selenium-webdriver/selenium-grid-how-to-easily-setup-a-hub-and-node/
+
+**************************************************************************
+
+
+http://192.168.1.75:4444/grid/console
+192.168.1.75 ---- HUB Url
+java -jar selenium-server-standalone-2.52.0.jar -port 4444 -role hub
+
+Node urls 
+192.168.1.90
+java -Dwebdriver.chrome.driver=E:/Softwares/chromedriver.exe -jar selenium-server-standalone-2.52.0.jar -port 5555 -role node -hub http://192.168.1.75:4444/grid/register -browser "browserName=firefox, maxInstances=10, platform=ANY, seleniumProtocol=WebDriver" -browser "browserName=chrome,version=ANY,maxInstances=10,platform=WINDOWS"
+
+java -Dwebdriver.chrome.driver=E:/Softwares/chromedriver.exe -jar selenium-server-standalone-2.52.0.jar -port 6666 -role node -hub http://192.168.1.75:4444/grid/register -browser "browserName=firefox, maxInstances=10, platform=ANY, seleniumProtocol=WebDriver" -browser "browserName=chrome,version=ANY,maxInstances=10,platform=WINDOWS"
+
+192.168.1.84
+java -Dwebdriver.chrome.driver=D:/softwares/chromedriver.exe -jar selenium-server-standalone-2.52.0.jar -port 5555 -role node -hub http://192.168.1.75:4444/grid/register -browser "browserName=firefox, maxInstances=10, platform=ANY, seleniumProtocol=WebDriver" -browser "browserName=chrome,version=ANY,maxInstances=10,platform=WINDOWS"
+
+java -Dwebdriver.chrome.driver=D:/softwares/chromedriver.exe -jar selenium-server-standalone-2.52.0.jar -port 6666 -role node -hub http://192.168.1.75:4444/grid/register -browser "browserName=firefox, maxInstances=10, platform=ANY, seleniumProtocol=WebDriver" -browser "browserName=chrome,version=ANY,maxInstances=10,platform=WINDOWS"
+
+192.168.1.161
+java -Dwebdriver.chrome.driver=D:/Gopal/Softwares/chromedriver.exe -jar selenium-server-standalone-2.52.0.jar -port 5555 -role node -hub http://192.168.1.75:4444/grid/register -browser "browserName=firefox, maxInstances=10, platform=ANY, seleniumProtocol=WebDriver" -browser "browserName=chrome,version=ANY,maxInstances=10,platform=WINDOWS"
+
+java -Dwebdriver.chrome.driver=D:/Gopal/Softwares/chromedriver.exe -jar selenium-server-standalone-2.52.0.jar -port 6666 -role node -hub http://192.168.1.75:4444/grid/register -browser "browserName=firefox, maxInstances=10, platform=ANY, seleniumProtocol=WebDriver" -browser "browserName=chrome,version=ANY,maxInstances=10,platform=WINDOWS"

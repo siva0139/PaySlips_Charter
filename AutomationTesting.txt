@@ -1,0 +1,37 @@
+
+Benfits of Automation Testing:
+******************************
+1) Automation, in any field, brings in the benefits of increased productivity and reduced costs. 
+2) Automation testing is the application of tools and technology to testing software with the goal of reducing testing efforts,
+   delivering capability faster and more affordably. It helps in building better quality software with less effort.
+3) Test Automation software is the best way to increase the effectiveness, efficiency and coverage of your software testing.
+4)An automated testing tool is able to playback pre-recorded and predefined actions, compare the results to the expected behavior 
+  and report the success or failure of these manual tests to a test engineer. Once automated tests are created they can easily be 
+  repeated and they can be extended to perform tasks impossible with manual testing. Because of this, savvy managers have found that
+  automated software testing is an essential component of successful development projects.
+5)Load testing ensures that your application can handle expected and unexpected user loads.
+6)Running tests 24/7:
+ No matter where you are in the world. You can start the tests when you leave the office and when you get back in the morning you can see the results and keep on working.
+  You can even do that remotely if you don’t have a lot of devices or you don’t have the possibility to buy them.
+7)Fewer human resources:
+  You don’t need a lot of people: you would need a test automation engineer to write your scripts to automate your tests, instead of a lot of people doing boring manual tests over and over again. 
+8)Reusability:
+   i) You don’t need new scripts all the time, even if the version of the OS on the device changes
+   ii) It allows you to redo the test exactly the same, without forgetting any steps
+9)Bugs:
+  Automation helps you find bugs in the early stages of software development, reducing expenses and working hours to fix these problems as well.
+10)Reliability:
+  Automated testing is more reliable and way quicker when running boring repetitive standardized tests which can not be skipped, ever, but may cause errors when manually tested.
+11)Continuity:
+  Automated testing helps testers, such as automation engineers. They can see exactly what other engineers have done, 
+  what scripts he has already written and what tests have already been performed and what bugs were already found and fixed, through clear reports.
+12)Helpful in testing complex web application:
+  Automation testing process is helpful for those web applications where millions of users interact together. 
+  If we go for manual testing process, creating those many users manually and simultaneously are difficult or impossible.
+13)Conclusion:
+   i)If the quality of your product is your number one priority, I strongly advocate using automated testing as part of your regular day-to-day development practices.
+     It will ensure that your application is tested properly and gives confidence to developers, management and customer alike.
+   ii)Automated tests have an upfront cost and they do take the time to develop. The investment will pay off in the long term, 
+      in terms of reduced workload, eliminating manual errors, accuracy, and savings on cost and time.
+   iii)Overall, automated testing is a faster way to get feedback on failures than manual testing, in line with the principles of “Fail fast, Fail early”.
+       It helps to ensure quality in a way manual testing never will be able to.

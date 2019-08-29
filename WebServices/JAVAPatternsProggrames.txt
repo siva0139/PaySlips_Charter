@@ -1,0 +1,872 @@
+package com.automation.java.programming;
+
+public class Pattern1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	  /*1
+		2 2
+		3 3 3 
+		4 4 4 4
+		5 5 5 5 5
+		6 6 6 6 6 6 
+		7 7 7 7 7 7 7 */
+		
+		for(int i=1;i<=7;i++) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(" ");
+				System.out.print(i+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+*************************************
+package com.automation.java.programming;
+
+public class Pattern2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	  /*1
+		1 2
+		1 2 3 
+		1 2 3 4
+		1 2 3 4 5 
+		1 2 3 4 5 6 
+		1 2 3 4 5 6 7 */
+		
+		for(int i=1;i<=7;i++) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(j);
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
+**************************************
+package com.automation.java.programming;
+
+public class Pattern3 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		  /*1
+			1 2
+			1 2 3 
+			1 2 3 4
+			1 2 3 4 5 
+			1 2 3 4 5 6 
+			1 2 3 4 5 6 7 
+			1 2 3 4 5 6 
+			1 2 3 4 5
+			1 2 3 4 
+			1 2 3
+			1 2 
+			1 */
+	
+		
+		for(int i=1;i<=7;i++) {
+			
+			for(int j=1;j<=i;j++) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+		for(int i=6;i>=1;i--) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+}
+****************************************************
+package com.automation.java.programming;
+
+public class Pattern4 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		  /*
+		   * 
+		   * *
+		   * * *
+		   * * * * 
+		   * * * * *
+		   * * * * * *
+		   * * * * * * *
+			 */
+	
+		for(int i=1;i<=5;i++) {
+			
+			for(int j=1;j<=i;j++) {
+				
+				System.out.print("*"+" ");
+				
+			}
+			System.out.println();
+		}
+		
+		for(int i=4;i>=1;i--) {
+			for(int j=1;j<=i;j++) {
+				System.out.print("*"+" ");
+			}
+			System.out.println();
+		}
+		
+		
+	}
+}
+****************************************************
+package com.automation.java.programming;
+
+public class Pattern5 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		  /*
+			1 2 3 4 5 6 7 
+			1 2 3 4 5 6 
+			1 2 3 4 5
+			1 2 3 4 
+			1 2 3
+			1 2 
+			1 */
+	
+		
+		for(int i=6;i>=1;i--) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+}
+******************************************************
+package com.automation.java.programming;
+
+public class Pattern6 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		  /*
+			7 6 5 4 3 2 1 
+			7 6 5 4 3 2  
+			7 6 5 4 3 
+			7 6 5 4  
+			7 6 5 
+			7 6  
+			7
+			 */
+	
+		
+		for(int i=1;i<=7;i++) {
+			for(int j=7;j>=i;j--) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+}
+*********************************************************
+package com.automation.java.programming;
+
+public class Pattern7 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		  /*
+			1 2 3 4 5 6 7 
+			1 2 3 4 5 6 
+			1 2 3 4 5
+			1 2 3 4 
+			1 2 3
+			1 2 
+			1
+			1 2 
+			1 2 3
+			1 2 3 4 
+			1 2 3 4 5
+			1 2 3 4 5 6
+			1 2 3 4 5 6 7
+			 */
+	
+		for(int i=7;i>=1;i--) {
+			for(int j=1;j<=i ;j++) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+		for(int i=2;i<=7;i++) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+}
+*******************************************************
+package com.automation.java.programming;
+
+public class Pattern8 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		  /*
+			1
+			1 2 1
+			1 2 3 2 1 
+			1 2 3 4 3 2 1
+			1 2 3 4 5 4 3 2 1
+			1 2 3 4 5 6 5 4 3 2 1
+			1 2 3 4 5 6 7 6 5 4 3 2 1
+			
+			 */
+	
+		
+		for(int i=1;i<=7;i++) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(j+" ");
+			}
+			for(int j=i-1;j>=1;j--) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+		
+	}
+}
+****************************************************
+package com.automation.java.programming;
+
+import java.util.Scanner;
+
+public class DimondPattern {
+
+	public static void main(String[] args) {
+        // Create a new Scanner object
+ /*       Scanner scanner = new Scanner(System.in);
+
+        // Get the number of rows from the user
+        System.out.println("Enter the number of rows to print the pattern ");
+
+        int rows = scanner.nextInt();
+              1
+             1 2 
+            1 2 3 
+           1 2 3 4 
+          1 2 3 4 5 
+         1 2 3 4 5 6 
+     
+        */
+       
+		for(int i=1;i<=8;i++) {
+			
+			for(int k=8;k>=i;k--) {
+				
+				System.out.print(" ");
+			}
+			
+			for(int j=1;j<=i;j++) {
+				System.out.print(j+" ");
+			}
+			System.out.println();
+		}
+       
+
+       }
+}
+****************************************************************
+package com.automation.java.programming;
+
+public class Pattern9 {
+
+	
+	/*
+	 *         1
+	 *         2 3 
+	 *         4 5 6
+	 *         7 8 9 10
+	 *         11 12 13 14 15
+	 *         
+	 * 
+	 * 
+	 */
+	static int k=1;
+	public static void main(String[] args) {
+		for(int i=1;i<=5;i++) {
+			for(int j=1;j<=i;j++) {
+				System.out.print(k+" "); 
+				k++;
+			}
+			System.out.println();
+		}
+		
+	}
+	
+	
+}
+**************************************************************
+package com.automation.java.programming;
+
+public class ReverseTheNmber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		int number =123456789;
+		System.out.println("Before Reverse:"+number);
+		int reverse=0;
+		
+		while(number!=0) {
+			reverse= reverse*10;
+			reverse=reverse+number%10;
+			number=number/10;
+		}
+		
+        System.out.println("After Reverse: "+reverse);
+		
+		
+	}
+
+}
+********************************************************************
+package com.automation.java.programming;
+
+import java.util.Random;
+
+public class GenerateRandomNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		/*String phoneNumber="9849708";
+          Random random = new Random();
+		
+		for(int i=0;i<1;i++) {
+			phoneNumber=phoneNumber+random.nextInt(111);
+          System.out.println(phoneNumber);
+		}*/
+		
+		String FirstName="P";
+        Random random = new Random();
+		String alphabet="abc";
+		int len=alphabet.length();
+		System.out.println("Length is : "+len);
+		for(int i=0;i<=3-1;i++) {
+			
+			FirstName=FirstName+alphabet.charAt(random.nextInt(len));
+		}
+       System.out.println(FirstName);
+	}
+
+}
+***********************************************************************
+package com.automation.java.programming;
+
+public class FabannaciSerice {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		/* FabanacciNumber of 10
+		  
+		  0 1 1 2 3 5 8 13 21 34 55 89
+		
+		*/
+		int firstNum=0;
+		int secondNum=1;
+		System.out.println("The FabannacciSerice is : ");
+		System.out.print(firstNum+" ");
+		System.out.print(secondNum+" ");
+		for(int i=0;i<15;i++) {
+			
+			int thrirdNum=firstNum+secondNum;
+			System.out.print(thrirdNum+" ");
+			firstNum=secondNum;
+			secondNum=thrirdNum;
+		}
+	}
+
+}
+**************************************************************************
+package com.automation.java.programming;
+
+public class ReverseAString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		
+		String name="PraneethkumarManala";
+		
+		String reverse="";
+		
+		for(int i=name.length()-1;i>=0;i--) {
+			
+			reverse=reverse+name.charAt(i);
+			
+			
+		}
+		System.out.println(reverse);
+		
+	}
+
+}
+*************************************************************************
+package com.automation.java.programming;
+
+public class RemoveJunkFromString {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String name="^&*Pran$%^&*eeth100$%^&*#$%^&*";
+		
+		//Regular Expression [^a-zA-Z0-9]
+		
+		name=name.replaceAll("[^a-zA-Z]", "");
+		System.out.println(name);
+	}
+
+}
+****************************************************************************
+package com.automation.java.programming;
+
+public class HowToFindMissingNumber {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int a[]= {1,2,4,5};
+		
+		int totalNum=0;
+		int count=0;
+		for(int i=0;i<=a.length-1;i++) {
+			
+			totalNum=totalNum+a[i];
+			
+		}
+		
+		for(int j=1;j<=5;j++) {
+			count=count+j;
+		}
+		
+		int missingnum=count-totalNum;
+		System.out.println(missingnum);
+	}
+
+}
+******************************************************************************
+package com.automation.java.programming;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+public class HotToFindDuplicateElementFromArray {
+
+	public static void main(String[] args) {
+
+        String names[]= {"Java","JavaScript","Ruby","C","Java","Selenium","C"};
+        
+        
+       /* //Solution 1
+        for(int i=0;i<names.length;i++) {
+        	
+        	for(int j=i+1;j<names.length;j++) {
+        		if(names[i].equals(names[j])) {
+        			System.out.println("Duplicate Element is :"+names[i]);
+        		}
+        	}
+        }*/
+
+       /* //Solution 2 By using HashSet
+        
+         HashSet<String> set = new HashSet<String>();
+         for(String name:names) {
+        	 if(set.add(name)==false) {
+        		 System.out.println("Duplicate Element is :"+name);
+        	 }
+         }*/
+         
+         //Solution 3 By using HashMap
+         
+        Map<String, Integer> map = new HashMap<String,Integer>();
+         
+         for(String name:names) {
+        	 Integer count=map.get(name);
+        	 if(count==null) {
+        		 map.put(name, 1);
+        	 }
+        	 else{
+        		 map.put(name, ++count);
+        	 }
+         }
+         
+         Set<Entry<String , Integer>> entryset = map.entrySet();
+         
+         for(Entry<String, Integer> entry:entryset) {
+        	 if(entry.getValue()>1) {
+        		 System.out.println("Duplicate Element is :"+entry.getKey());
+        	 }
+         }
+         
+	}
+
+}
+**********************************************************************************
+package com.automation.java.programming;
+
+public class LargestAndSmallestIntgerArray {
+
+	public static void main(String[] args) {
+	
+		int numbers[]= {1,10,25,-1,-10,-25,100,-875};
+     
+		 int largest=numbers[0];
+		 int smallest=numbers[0];
+		 
+		 for(int i=1;i<numbers.length;i++) {
+			 if(numbers[i]>largest) {
+				largest=numbers[i];
+			 }
+			 else if(numbers[i]<smallest) {
+				 smallest=numbers[i];
+			 }
+		 }
+		
+		System.out.println("Smallest No is : "+smallest);
+		System.out.println("largest No is : "+largest);
+	}
+
+}
+*********************************************************************************
+package com.automation.java.programming;
+
+public class StringManipulation {
+
+	public static void main(String[] args) {
+		
+		String str="The rains have started here";
+		String str1="The rains have started Here";
+		System.out.println(str.length());
+		
+        System.out.println(str.charAt(5));
+        
+        System.out.println(str.indexOf("s"));
+        
+        System.out.println(str.indexOf("s", str.indexOf("s")+1));
+        
+        System.out.println(str.indexOf("hello"));
+        
+        System.out.println(str.equals(str1));
+        
+        System.out.println(str.equalsIgnoreCase(str1));
+        
+        System.out.println(str.substring(4, 9));
+        
+        String s="                    Pra  neeth Ku mar                 ";
+        
+        System.out.println(s.trim());
+        
+        System.out.println(s.replace(" ", ""));
+        
+        String date="10/25/2018";
+        System.out.println(date.replaceAll("/", "-"));
+        
+        String test="Hellow_World_Test_Selenium";
+        
+        String[] data=test.split("_");
+        
+        for(int i=0;i<data.length;i++) {
+        	System.out.println(data[i]);
+        }
+        
+        for(String data1:data) {
+        	System.out.println(data1);
+        }
+        
+        String p="Prnaeeth";
+        p.concat("Kumar");
+        String  p1=p.concat("Manala");
+        System.out.println(p);
+        System.out.println(p.concat("Kumar"));
+        System.out.println(p1);
+        
+        
+        
+	}
+
+}
+****************************************************************************
+package com.automation.java.programming;
+
+public class Swaping {
+
+	public static void main(String[] args) {
+	
+		/*// solution 1 : using 3rd variable
+		
+		int a=10;
+		int b=5;
+		int temp;
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println("************");
+		temp=a;
+		a=b;
+		b=temp;
+		System.out.println(a);
+		System.out.println(b);
+		*/
+		
+	/*	// Solution 2 : With out using 3rd variable
+		
+		int a=10;
+		int b=5;
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println("************");
+		a=a+b; //15
+		b=a-b; //10
+		a=a-b;
+		
+		System.out.println(a);
+		System.out.println(b);
+		
+		*/
+		int a=10;
+		int b=5;
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println("************");
+		a=a*b; //50
+		b=a/b; //10
+		a=a/b;
+		
+		System.out.println(a);
+		System.out.println(b);
+		
+	}
+
+}
+*/******************************************************************************
+package com.automation.java.programming;
+
+
+
+public class Swapingof2Strings {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String a="Hello";
+		String b="World";
+		
+		a=a.concat(b);//HelloWorld
+		b=a.substring(0,a.length()-b.length()); //(0,10-5)
+		
+		a=a.substring(b.length());
+		
+		System.out.println(a);
+		
+		System.out.println(b);
+		
+		
+		
+	}
+
+}
+*********************************************************************************
+package com.automation.java.programming;
+
+import java.util.Scanner;
+
+public class FactorialofNumber {
+
+	public static void main(String[] args) {
+		
+		int number =6;
+		int fact=1;
+		for(int i=1;i<=number;i++) {
+			fact=fact*i;
+		}
+		System.out.println(fact);
+		
+	}
+}
+*********************************************************************************
+package com.automation.java.programming;
+
+import java.util.Scanner;
+
+public class MultplicationTable {
+
+	public static void main(String[] args) {
+		
+		for(int i=19;i<=19;i++) {
+			for(int j=1;j<=10;j++) {
+				
+				System.out.println(i+"*"+j+"="+(i*j));
+			}
+			
+		}
+		
+	}
+}
+*************************************************************************************
+package com.automation.java.programming;
+
+import java.util.Scanner;
+
+public class EvenAndOddNumber{
+
+	public static void main(String[] args) {
+		
+		int number=51;
+		
+		if(number%2==0) {
+			System.out.println("Even Num");
+		}
+		else {
+			System.out.println("odd Num");
+		}
+		
+		
+	}
+}
+**********************************************************************************
+package com.automation.java.programming;
+
+import java.util.Scanner;
+
+public class PrintAtoZ{
+
+	public static void main(String[] args) {
+		
+		for(char ch='a';ch<='z';ch++) {
+			System.out.print(ch+" ");
+		}
+		
+	}
+}
+************************************************************************************
+package com.automation.java.programming;
+
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class AnagramorNot{
+
+	public static void main(String[] args) {
+
+
+		String a="angel";
+		String b="glean";
+		
+		char[] words = a.toCharArray();
+		
+		char[] awords=b.toCharArray();
+		
+	   Arrays.sort(words);
+	   Arrays.sort(awords);
+	   
+	   if(Arrays.equals(words, awords)) {
+		   System.out.println("Given word is Anagram");
+	   }
+	   else {
+		   System.out.println("Given Word is not a Anagram");
+	   }
+		
+	}
+}
+**************************************************************************************
+package com.automatoin.javaProgramming.pankaj;
+
+
+  /* 1.First Parent Class Static block will execute
+     2.second child class static block will execute
+     3.Parent class non static block will execute
+     4.Child class non static block will execute
+  
+  
+  */
+
+	class A1{
+		
+	static int i=100;
+	//1
+	static {
+		
+		i=i-- - --i;
+		System.out.println("A1 Static i:"+i);
+	}
+	//3
+	{
+		i=i++ + ++i;
+		System.out.println("A1 i:"+i);
+		
+	}
+	
+	}
+		class B1 extends A1{
+		
+	//2
+	static {
+		
+		i=--i - i--;
+		System.out.println("B1 Static i:"+i);
+	}
+	//4
+	{
+		i=++i + i++;
+		System.out.println("B1 i:"+i);
+		
+	}
+	
+	}
+	
+	
+	public class IncrementDecrement {
+		
+		
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+      
+		B1 b= new B1();
+		System.out.println(b.i);
+      
+      
+	}
+
+}
+**********************************************************************

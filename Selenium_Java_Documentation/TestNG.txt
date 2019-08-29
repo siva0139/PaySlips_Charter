@@ -1,0 +1,260 @@
+TEstNG
+*******
+/*TestNG
+ * 1.It is a Java Unit Testing Framework
+ * 2.Design test cases in a systematic way
+ * 3.It will generate good HTML reports
+ * 4.lot of annotations
+ * 5.Prioritize the test cases ==> @Test(priority=1)
+ * 6.Dependency future ===> @Test(dependsOnMethods= {"LoginTest"})
+ * 7.Grouping also possible in testNG==>  @Test(priority=2,groups= {"Sanity","Regression"})
+ *                                        @Test(expectedExceptions=ArithmeticException.class)
+ *                                        @Test(invocationTimeOut=2)
+ * 8.Data provider 
+ * 9.TestNG is also called TDD(Test Driven Development)
+ * 10.We can give Invocation Count===>@Test(invocationCount=2)
+ *  
+ * TestNG==>http://beust.com/eclipse/
+ *  
+ * Annotations
+ * *********** 
+ * @Beforesuit
+ * @BeforeTest
+ * @BeforeClass
+ * @BeforeMethod
+ * @Test
+ * @AfterMethod
+ * @AfterClass
+ * @AfterTest
+ * @Aftersuit
+ * 
+ * */
+*************************************************************************************************
+1.Groups
+*********
+public class GroupsDemo {
+
+	
+	
+	@Test(groups= {"SanityTest"})
+	public void test1() {
+		System.out.println("Test1");
+                 Assert.assertTrue(false);
+ 	}
+	@Test(groups= {"RegressionTest"},dependsOnMethods= {"test1"})
+	public void test2() {
+		System.out.println("Test2");
+	}
+	@Test(groups= {"SanityTest","RegressionTest"})
+	public void test3() {
+		System.out.println("Test3");
+	}
+	@Test(groups= {"SanityTest"})
+	public void test4() {
+		System.out.println("Test4");
+	}
+	
+XML:
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="1" name="Test">
+  <groups> 
+  <run>
+  <include name="RegressionTest"></include>
+  </run>
+   </groups>
+    <classes>
+    
+      <class name="com.automation.TestNGNew.GroupsDemo"/>
+    </classes>
+   
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+************************************************************************************************
+2.Parameter Concept
+*******************
+public class Parameter1 {
+
+	
+	WebDriver driver;
+	
+	@BeforeMethod
+	@Parameters({"browser1"})
+	public void setup(@Optional("firefox") String browser) {
+		
+		if(browser.equals("chrome")) {
+	    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+	    	driver = new ChromeDriver();
+	    	}
+		else if(browser.equals("firefox")) {
+	    	System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/geckodriver.exe");
+	    	driver= new FirefoxDriver();
+		}
+		driver.manage().window().maximize();
+		driver.get("https://www.freecrm.com/index.html");
+	}
+	
+	@Test
+	@Parameters({"username","password"})
+	public void login(@Optional("praneethmanala")String username,@Optional("praneethmanala")String password) throws InterruptedException {
+		driver.findElement(By.name("username")).sendKeys(username);
+		Thread.sleep(2000);
+		driver.findElement(By.name("password")).sendKeys(password);
+		Thread.sleep(2000);
+		driver.findElement(By.xpath(".//*[@type='submit']")).click();
+	}
+	
+	@AfterMethod
+	public void teardown() {
+		
+		driver.close();
+	}
+}
+*******
+TestNG.xml(parameter and listener class)
+**********
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+<listeners>
+
+<listener class-name="com.automation.testNG.AnnotationTransform"></listener>
+<listener class-name="com.automation.testNG.CustomListner"></listener>
+</listeners>
+
+  <test thread-count="5" name="Test">
+    <parameter name="browser" value="chrome"></parameter>
+    <parameter name="username1" value="praneeth"></parameter>
+    <parameter name="password1" value="praneeth"></parameter>
+    <classes>
+      <class name="com.automation.TestNGNew.Parameter1"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+***********************************************************************************************************
+3.Retry Logic
+**************
+1.Retry
+*******
+public class RetryAnaliser implements IRetryAnalyzer{
+
+	int counter=0;
+	int limit=2;
+	
+	
+	public boolean retry(ITestResult result) {
+		
+		if(counter<limit)
+		{
+			counter++;
+			return true;
+		}
+		
+		return false;
+		
+	}
+
+	
+	
+}
+*********************
+2.Annotation Transform
+**********************
+public class AnnotationTransform implements IAnnotationTransformer{
+
+	
+	public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
+		
+		annotation.setRetryAnalyzer(RetryAnaliser.class);
+		
+	}
+
+	
+}
+3.Implementation
+---------------------
+public class RetryImplementation {
+	
+	
+	
+	@Test(retryAnalyzer=RetryLogic.class)
+	public void test() {
+		
+		System.out.println("Retry Logic");
+		Assert.assertTrue(false);
+		
+	}
+
+}
+
+4.Xml
+-----
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite"  thread-count="1">
+
+ <listeners>
+ <listener class-name="com.automation.retryLogin.RetryLogic"></listener>
+  </listeners>
+  
+  <test name="Test">
+    <classes>
+      <class name="com.automation.retryLogic.RetryImplementation"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+***********************************************************************************************************'
+4.RunMethodsin Parallel
+************************
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="methods" thread-count="2">
+  <test name="Test1">
+    <classes>
+      <class name="com.automation.krishnasakinala.RunMethodsParallel"/>
+     
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+******************************************************************************************
+5.Run Classes in Parallel
+**************************
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="classes" thread-count="2">
+  <test name="Test1">
+    <classes>
+      <class name="com.automation.krishnasakinala.RunClassesParallel1"/>
+       <class name="com.automation.krishnasakinala.RunClassesParallel2"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+
+*****************************************************************************************
+6.Run Tests in Parallel
+**************************
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="2">
+  <test name="Test1">
+    <classes>
+      <class name="com.automation.krishnasakinala.RunClassesParallel1"/>
+     
+    </classes>
+  </test> <!-- Test -->
+  
+  <test name="Test2">
+    <classes>
+    
+       <class name="com.automation.krishnasakinala.RunClassesParallel2"/>
+    </classes>
+  </test> <!-- Test -->
+  
+</suite> <!-- Suite -->
+
+******************************************************************************

@@ -1,0 +1,494 @@
+/*Variable Types
+	 * 1.Local Variables
+	 *   -->1.Defining the variable inside the block of code or method is called local variable
+	 *      2.All the local variables are stored in Stack memory 
+	 *      3.Local variable scope is with in the block
+	 *      4.Local variables must be initialize 
+	 *      5.Organized by compiler (not the JVM)
+	 * 2.Global Variables (Instant Variables)
+	 *   -->1.Defining the variable inside the class and outside the method
+	 *      2.All the instant variables are stored in Heap Memory
+	 *      3.To access the instance variable we need on object 
+	 * 3.Static Variable
+	 *   --->1.Defining the variable inside the class and outside the method with the help of static keyword
+	 *       2.Static variables are stored in method area 
+	 *       3.Static variables are called by using Class Name
+	 * 
+	 * 
+	 */
+***************************************************************************************
+
+	/*
+	 * 1.String pool in method area 
+	 * 2.security 
+	 * 3.Class loading mechanism
+	 * 4.Optimization and performance
+	 * 5.String is immutable and final 
+	 * 6.All the wrapper classes are also immutable and final(Integer,Long ,Boolean,Float)
+	 * 7.String is also a class
+	 * 8.String is immutable in java 
+	 * 9.Strings are defined in 2 types. 
+	 *    1.Literal --> Stored in String constant pool
+	 *    2.new keyword --> Stroed in Heap memory
+	 * 10. we can compare strings in 3 types
+	 *      1.equals --> it compares text (content comparision)
+	 *      2.compareTo --> it compares text
+	 *      3.==(double equal to)--> compares both pointing to same variable or not ==> Reference comparision(Address comparision)   
+	 * 
+                Example:
+		String s1= new String("selenium");
+		String s2= new String ("selenium");
+		System.out.println(s1==s2);---> false
+		System.out.println(s1.equals(s2));---> true   
+
+
+	 */
+***********************************************************************************
+         //super() 
+           1.super keyword is used to call the parent class constructor
+	// 2.super keyword is 1 st line of constructor(1st line of any constructor is always super keyword)
+
+        super Keyword
+        ************
+         To Call the parent class members 
+           e.g : super.add();
+*************************************************************************************
+
+/* final
+	 * ******
+	 * 1.final keyword is used to define the constant values -- Variables
+	 * 2.final is also used for a classes to prevent inheritance -- Class Level
+	 * 3.final is also used for methods to prevent overriding --Method Level
+	 * 
+	 * 
+	 */
+	
+	/* finally
+	 * ******
+	 * 1.finally is a block
+	 * 2.Always used with try catch block (finally block code is executed after the try and catch blocks )
+	 * 3.finally block will be execute always if exception comes or not 
+	 * 
+	 * 
+	 */
+	/* finalize
+	 * ********
+	 * 1.finalize is a method relating to garbage collector
+	 * 2.Garbage collector will come to the memory it will destroy all the objects it doesn't have any reference to free some space is memory
+	 * 3.to clean up action
+	 * 
+	 * 
+	 * 
+	 */
+**********************************************************************************
+ /* 1.MehtodOverloading--->When the method name is same with different input parameters with in the same class
+	* 2.We can not create a method inside the method
+	* 3.duplicate methods are not allowed with same parameters
+	* 4.Main method can be overloaded
+	*/
+	
+	/*MethodOverriding--- When method present in child class and parent class with same name and same no of arguments is called Method overriding
+	 * 
+	 */
+**************************************************************************************
+/*Encapsulation
+	 * 1.Hiding the data(Encapsulation is also called data hiding)
+	 * 2.For security reasons we use encapsulation 
+	 * 3.Make the private data variables so that variables can not accessed directly from the outside the class
+	 * 4.Getter and setter methods -> to set and get the values of the fields and these methods are in public in nature
+	 * 5.Maintenance is easy 
+           6.Encapsulation in java is a process of binding code and data together into a single unit 
+	 */
+**************************************************************************************
+
+/*Modifiers
+	 * public --1.Class,method,constructor,interface,variables
+	 *          2.Import the class
+	 *          3.Within class,outside class,same package,outside package
+	 *          
+	 * private--1.used for Methods,Variables and constructors 
+	 *          2.With in the declared class itself
+	 *          3.Not used in class and interface
+	 *          4.only with in the class
+	 *          
+	 * default -- 1. No keyword
+	 *            2.same package only
+	 *            3.Within class,outside class,same package and not outside the package
+	 *            
+	 * protected--1.Variables,methods and constructor
+	 *            2.not used for class and interface
+	 *            3.Access outside of the package also by using inheritance
+	 *            4.Within class,outside class,same package,outside package (by inheritance)
+	 * final--> 1.used in variables,methods and classes
+                    2.if we use final variable we cannot change the value
+                    3.if we write final method we can not override
+                    4.if we write final class we can not inherit 
+ 
+********************************************************************************************
+Staic block-->1.This block will execute before the object creating
+              2.It will execute only once
+
+******************************************************************************************
+Exception Handling
+********************
+/*Exceptions
+ * *********
+ *                                  Object 
+ *                                     |
+ *                                 Throwable
+ *                                     |
+ *                         |-------------------------|            
+ *                    Exception                    Error
+ *                         |
+ *                         |
+ *                -------------------------------------------------------------
+ *                |                                                           |
+ *        Unchecked Exception(Run time Exception)                   Checked Exception(compile time Exception)
+ *        |                                                                   |
+ *        |-Arithmetic Exception                                              |-FileNotFound Exception
+ *        |-ArrayIndexOutOfBound Exception                                    |-ClassNotFound Exception
+ *        |-Null pointer Exception                                            |-Interrupted Exception
+ *        |-stackOverflow Exception                                           |-IO Exception
+ *        |-NumberFormate Exception
+ *        |-ClassCast Exception
+ *        |-OutOfMemory Exception
+ *        |-IlligalState Exception
+ *         
+
+/*Throw keyword
+	 * ************
+	 * 1.Some times we can create exception object explicitly we can hand over to the JVM manually,
+	 *   for this we have to use throw keyword
+	 * 2.Hence the main objective of throw keyword is to hand over our created exception object to the JVM manually
+	 * 3.Best use of throw keyword is for user defined exceptions or customized exceptions
+	 *   ex: ATM withdraw more than balance , Recharges card
+	 * 4.After throw statement  we are not allowed to write any statement directly other wise we will get compile time
+	 *   error saying unreachable statement
+	 * 5.We can use throw keyword only for throwable types if we are trying to use for normal java objects we will get
+	 *   compile time error saying incompatible types .
+	 */
+	/*Throws Keyword
+	 **************
+	 * 1.In our program if there is a possibility of rising checked exception
+	 *    then compulsory we should handle that checked exception other wise 
+	 *    we will get compile time error saying unreported exception
+	 * 2.we can handle this compile time error by 2 ways
+	 *  1.By using try catch
+	 *  2.Using throws keyword 
+	 *    1.We can use throws keyword to delegate responsibility of exception handling to the caller
+	 *      (It may be another method or JVM) then caller method is responsible to handle that exception
+	 */
+/* Difference between checked and unchecked exception
+	 * ***************************************************
+	 * 1.Checked Exception
+	 * ******************
+	 *      1.The Exceptions which are checked by compiler for smooth execution of the program at 
+	 *         runtime are called checked exceptions
+	 *      2.In the case of checked exceptions compiler will check whether we are handling exception if the programmer not 
+	 *        handling then we will get compile time error
+	 * 2.Unchecked Exception
+	 * **********************  
+	 *     1.The Exceptions which are not checked by compiler are called unchecked exceptions
+	 *     2.In the case of unchecked exceptions compiler wont check whether programmer handling exception or not
+	 * 
+	 */
+*****************************************************************
+	
+	/*Collection
+	 * **********
+	 * 1.Collections is a framework
+	 * 2.To store or manipulate the groups of objects
+	 * 3.Dynamic in nature
+	 * 
+	 * LIST(Interface)--ArrayList,LinkedList,Vector,Stack--Classes
+	 * ***********************************************************
+	 * 1.ArrayList:
+	 * *********
+	 * 1.It accept duplicate values
+	 * 2.It maintain insertion order
+	 * 3.It is not synchronized (Arraylist is slow compared to other collections)
+	 * 4.It stores the values on the basis of indexes so retryving the values are easy
+	 * 5.Methods-add(),addAll(),remove(),removeAll(),retailAll()--Prints only common part of 2 lists
+	 * 
+	 * 2.LinkedList
+	 * ************
+	 * 1.Insertion is very easy
+	 * 2.removal is very easy
+	 * 3.Retryval operation is hard
+	 * 
+	 * 
+	 * MAP
+	 * ****
+	 * 1.Map<Key , value> pair
+	 * 2.put(),putAll(),get(key),containKey(key),remove(Key),getKey(),getValue()
+	 * 3.KeySet(),entrySet()
+	 * 4.contains only unique keys
+	 * 5.It may hava one null key is allowed and multiple null values we can store
+	 * 6.It maintains No order
+	 * 7.Hash Map is non synchronized
+	 * 
+	 * HashTable
+	 * *********
+	 * 1.Synchronized -- Thread Safe
+	 * 2.It stores the values based on hashcode
+	 * 2.Key--Object--HashCode(Java object defines by number i.e hashcode)---Values
+	 * 
+	 * 
+	 */
+
+********************************************************************************
+/*SeleniumGrid
+	 * 
+	 *Step1: command1:
+	 * cmd:> java -jar selenium-server-standalone-2.53.jar -role hub
+	 * 
+	 * Step2: command2:
+	 * cmd:> java -jar selenium-server-standalone-2.53.jar -role node -hub http://localhost:4444/grid/register
+	 * 
+	 * Step3: Go to Firefox/chrome
+	 * localhost:4444/grid/console
+	 * 
+	 * Step4: selenium code
+	 * 
+	 * 	DesiredCapabilities capability = new DesiredCapabilities().firefox();
+	 *  capability.setCapability(ChromeOptions.CAPABILITY, options);
+		capability.setPlatform(Platform.WINDOWS);
+		URL url = new URL("http://localhost:4444/wb/hub");
+		RemoteWebDriver driver = new RemoteWebDriver(url, capability);	
+		driver.get("http://www.google.com");
+	 * 
+	 * 
+	 * */
+	
+***************************************************************************************************
+
+
+	/*Git(2.18 v) and GitHub (Git != GitHub)
+	 * 
+	 * 1.Git : Version Control system(VCS)
+	 * 2.to track changes in files/folders
+	 * 3.to collaborate 
+	 * 4.It is free and open source system
+	 * Types
+	 * 1.Centralized Version Control
+	 * 2.Distributed Version Control--Git
+	 * 
+	 * GitHub
+	 * -------
+	 * 1.Website to upload your repositories online
+	 * 2.provides backup
+	 * 3.provides visual interface to your repositories
+	 * 4.makes collaboration easier
+	 * 
+	 * 
+	 * 2. Install Git
+	 * ---------------
+	 * 1. cmd> git -version
+	 * 2. Download git from google
+	 * 3. add your project to git
+	 * 4.commands
+	 * 
+	 *    1.git config --global user.email "praneethmanala@gmail.com"
+	 *    1.git config --global user.name "PraneethKumarManala"
+	 *    1. > git --version
+	 *    2. Go to folder directory and >git init(.git file will create in directory)
+	 *    3. > git status (Right click on directory and go to GitBashHeare)
+	 *    4. > git add .
+	 *    5. > git commit -m .
+	 *    6. > git remote add origin https://github.com/PraneethKumarManala/CNG_Allconnect.git
+	 *    7. > git push -u origin master
+	 *    8. > git log
+	 *    9. > git --help
+	 *    
+	 * 3. Branching and Merging
+	 * ------------------------------
+	 * 1. Create Branch
+	 *    cmd> git branch MyNewBranch
+	 * 2. Checkout branch
+	 *    cmd> git checkout MyNewBranch
+	 * 3.      git add .
+	 *         git commit -m .
+	 *         git push -u origin MyNewBranch
+	 *         git merge MyNewBranch
+	 *         git push -u origin master
+	 * 4.  Delete branch
+	 *      cmd > git branch -d MyNewBranch (This will delete from local)
+	 *      cmd > git push origin --delete MyNewBranch (Delete from remote)
+	 *          
+	 * 4.Email Notifications
+	 * ----------------------
+	 * 1. Goto GitHub--> Repository-->Settings-->Integrations and Services and ass email   
+	 * 
+	 * 5.Tags
+	 * ------
+	 * 1. git checkout <branch name>
+	 *    cmd> git checkout master
+	 * 2. create tag with some name
+	 *    cmd> git tag v1.0
+	 *    cmd > git tag
+	 *    @git tag -a v1.0 -m "Ver o of .."(to create annotated tags)
+	 *    cmd > git tag -a v1.1 -m "tag for release ver 1.1"
+	 *    cmd > git tag
+	 * 3. git show v1.0
+	 *    git tag -l "v1.*"
+	 * 4. cmd> git push origin v1.0
+	 *         git push origin --tags
+	 *         git push --tags(to push all tags at once)
+	 * 5.Delete tags
+	 *   cmd> git tag -d v1.0
+	 *        git tag --delete v1.1
+	 *   Delete in remote
+	 *   cmd> git push origin -d v1.0
+	 *        git push origin --delete v1.0
+	 *                                         
+	
+	 * */
+****************************************************************************************
+Protractor:
+*************
+1.cmd>npm -version
+  cmd>npm install -g protractor
+  cmd> protractor --version
+
+2.cmd>webdriver-manager update
+  cmd>webdriver-manager start
+
+3.Go to firefox/chrome
+  http://localhost:4444/wd/hub
+****************************************************************************************
+
+1.Select
+************
+SELECT * FROM Customers;
+SELECT City, postalcode FROM Customers;
+************************************************************************************************
+2.Distinct
+***********
+SELECT Distinct City FROM Customers;
+************************************************************************************************
+3.Where , And ,or , not
+***********************
+SELECT * FROM Orders where orderid=10248;
+SELECT * FROM Orders where shipperid=1;
+SELECT * FROM Products where productName='chang';
+SELECT * FROM Products where productName='chang' and price=19;
+SELECT * FROM Products where productname='chang' or supplierid=1 or price=18;---shows more records
+SELECT * FROM Products where productname='chang' and supplierid=1 and price=19; -- shows only one record
+SELECT * FROM Customers WHERE Country='Germany' AND (City='Berlin' OR City='München'); 
+SELECT * FROM Customers WHERE not country='uk' and not country='usa' --shows remaining countries
+
+*************************************************************************************************
+4. Order By
+***********
+SELECT * FROM orders order by  customerid asc
+SELECT * FROM orders order by  customerid desc
+**************************************************************************************************
+5.Insert Into
+***************
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+****************************************************************************************************
+6.Is Null
+***********
+SELECT LastName, FirstName, Address FROM Persons
+WHERE Address IS NULL;
+****************************************************************************************************
+7.TOP
+********
+SELECT TOP 3 * FROM Customers;
+select top 5 percent * from customers
+SELECT top 3 * FROM OrderDetails order by quantity desc;
+****************************************************************************************************
+8.Count(),Avg() and sum()
+*************************
+select count(customerid) as TotalNoofcustomers from customers
+SELECT count(orderID) as TotalNoOfRecords FROM Orders;
+SELECT sum(quantity) as TotalnoOfOrders FROM OrderDetails;
+SELECT avg(price) as AvaragePrice FROM Products;
+****************************************************************************************************
+9.LIKE
+******
+SELECT * from customers where country like 'u%' -- shows country starts with u(uk,usa)
+SELECT * from customers where country like '%rk' --shows country ends with rk(Denmark)
+SELECT * from customers where customername like '%otto%' -- shows customername with middle otto
+SELECT * from customers where customername like '_o%' -- 2nd letter contains o
+SELECT * from customers where customername like 'F%B'-- word starts with F and ends with B
+SELECT * from customers where customername not like 'F%B' -- word not starts with F and ends with B
+******************************************************************************************************
+10.IN
+*****
+SELECT * from customers where country in('germany','mexico','uk')
+SELECT * from customers where country not in('germany','mexico','uk') 
+SELECT * from customers where country in('usa','mexico') order by customerid desc;
+******************************************************************************************************
+11.Between
+**********
+SELECT * FROM Products where price between 20 and 25;
+SELECT * FROM Products where price not between 20 and 25;
+SELECT * FROM Products WHERE (Price BETWEEN 10 AND 20) AND NOT CategoryID IN (1,2,3);
+******************************************************************************************************
+12.Create Table
+****************
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+*******************************************************************************************************
+13.Drop Table
+**************
+Drop table tableName; -- It deletes the table from database permanantly
+Note: Be careful before dropping a table. Deleting a table will result in loss of complete information stored in the table!
+
+**********************************************************************************************************************************************
+ Maven
+************
+// Goto cmd> mvn package -DskipTests(It creates the build .jar file and skips the testcases)
+	
+	/*Maven(ANT , Gradle are also build automation tool)
+	 * 1.Maven is Build Automation Tool
+	 * 2.Maven Life Cycle
+	 *   1.Maven Compile
+	 *     java,classes ,code
+	 *     comile using - Maven compiler plugin
+	 *   2.Maven Test
+	 *     Test (To execute all test cases)-- All Test Cases using - Maven Surefire plugin
+	 *   3.Maven Resources --jar
+	 *     Jars Wars Ears -- by - Maven Resources plugin
+            
+	
+	 *  mvn> mvn clean install 
+            mvn>mvn clean install test
+	 * */
+
+********************************************************************************************************
+ Sikuli
+********               
+                Screen s= new Screen();
+		 
+		 
+		 Pattern pauseimg= new Pattern("pause.png");
+		 s.wait(pauseimg,2000);
+		 s.click();
+		 
+		 
+		 Pattern playimg= new Pattern("playimg.png");
+		 s.wait(pauseimg1,2000);
+		 s.click();
+
+
+**********************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+

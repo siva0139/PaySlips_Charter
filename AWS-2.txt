@@ -1,0 +1,49 @@
+1.AWS Networking
+****************
+1.Create a VPC called as TCS - 10.1.0.0/16 - 65000 IP's Enable DNS HostNames.
+
+2.Create subnets for web, App and DB Servers- Enable Auto Assign IP.
+  WebServers- 10.1.1.0/24
+  AppServers- 10.1.2.0/24
+  DBServers - 10.1.3.0/24
+
+3.Create a Internet Gateway and attache it to VPC.
+4.Create routing table and assign IGW and Subnets to it. Don't use default routing able.
+5.Create a security group(Firewall) and allow traffic.
+6.Create a KeyPair - PublicKey - .PEM file -Key
+7.Deploy a Instance(VM) and access using putty.
+***************************************************************************
+VPC
+****
+1.Create VPC
+VPC - 192.168.10.0/16 - MYVPC-CGI
+
+
+2.Create Subnets
+subnet1 -CGI-Public-192.168.10.x
+CIDR- 192.168.10.0/24
+
+subnet2 -CGI-Public-192.168.20.x
+CIDR- 192.168.20.0/24
+
+
+3.Create IGW == CGI-Public-IGW (Attache it to VPC)
+
+4.Create routing table and assign IGW and Subnets to it. Don't use default routing able.
+
+5.Create one more routing table as Private-RoutingTable(Private-Routing-Table-192.168.20.x) and attache VPC
+
+6.Attache public subnet to Public Routing table
+  Attache Private subnet to Private Routing table
+
+7.Create EC2 Instance and select our MYVPC-CGI and add Public subnet to it and give IP as 192.168.10.10
+
+8.Go to pem file location and open git bash here and type 
+  >ssh -i "praneeth-devops.pem" ec2-user@34.201.2.21
+  >ping google.com
+  >ctrl+c
+
+***************************************************************************
+ELB(Elastic Load Balancer)
+***************************
+

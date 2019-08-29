@@ -1,0 +1,39 @@
+1.Get RID --> user RID
+  select Row_id from iam_user where email="pmanala@charterglobal.com"
+
+
+2.Get SALT , HASHED_VALUE --->Encrypted password of user 
+
+  select SALT , HASHED_VALUE FROM iam_password where IAM_USER_RID='88'
+
+3. select count(email) from iam_user ;
+
+4. Insert row in table
+   
+   insert into iam_password values('471',"1D1BBBF103B564101F61BD419E6DD74800752F43CEBEC98B6B39E263F0957C14","309C3A135E886C0582031556A33D98CB4B89ACDB149D9FB745E6CCA36139F0E6",1);
+
+5.select owner , count(owner) from end_point group by owner having count(owner)>7 order by count(owner) asc ;
+
+6.Inner Join
+  
+  select iam_user.email, iam_password.salt , iam_password.hashed_value from iam_user join iam_password on iam_user.row_id = iam_password.iam_user_rid ;
+
+7.Left join and right joint 
+
+  select end_point.subtype,end_point.name , endpoint_approval.approver_email,endpoint_approval.end_point_name from end_point left join/ (right join) endpoint_approval on end_point.row_id=endpoint_approval.row_id
+
+8. Full join
+
+9. Self Join
+    
+   SELECT a.emp_id AS "Emp_ID",a.emp_name AS "Employee Name",
+   b.emp_id AS "Supervisor ID",b.emp_name AS "Supervisor Name"
+   FROM employee a, employee b
+   WHERE a.emp_supv = b.emp_id;
+   
+
+  
+10. Exaples on Joins
+
+  select foods.item_name , foods.item_unit , company.company_name,company.company_city from
+  foods join company on foods.companyid=company.company_id

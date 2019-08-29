@@ -1,0 +1,306 @@
+What is AWS?
+************
+AWS is a secure cloud service platform,offering compute power, database storage, content deliver and 
+other functionality to help business scale and grow.
+
+****************
+Different Domains in AWS
+**************************
+1.Compute
+2.Migration
+3.Security & Identity,Complaince
+4.Storage
+5.Networking and Content Delivery
+6.Messaging
+7.Database
+8.Management Tools
+
+1.AWS Compute Services
+**********************
+I)EC2(Elastic Cloud Compute)
+**************************
+1.Resizable compute capacity in the cloud,which can be customized according to your need
+2.Provides scalable computing capacity in the Amazon Web Services cloud
+3.It provides Virtual servers are called as Instances for developing and deploying the applications
+******************************************
+II)Lamda(used to automatic backups)
+*********
+1.Execute bankground tasks,not for hosting an application.
+2.AWS Lamda is one of the services that falls under the 'Compute" domain of services that AWS provides
+3.Lamda can be used to run code(java,php,nodejs etc.) in response to certain events from other services
+********************************************
+
+Elastic Beanstalk
+*****************
+1.Deploy your applicaion without worrying about the underlying hardware.
+2.AWS Elastic Beanstalk is an PaaS(Plotform As A Service) service used for deploying and scaling web application
+  adn services developed with Java,.Net ,PHP itc on familar servers such as Apache,Tomcat and IIS.
+*****************
+Elastic Load Balancer-->Distributes the workload on the deployed instances
+AutoScaling-->Scale up and down automatically
+
+2.AWS Storage Services
+**********************
+S3(Simple Storage Service)--> Object Oriented File System
+EBS(Elastic Block Storage)-->Block Level Storage, provides high IOPS
+Glacier-->Data Archiving services, offering low price storage
+Cloudfront--> Content Delivery Network
+Snowball--> Physical transfer of data to AWS infrastructure.
+Storage Gateway-->Provide seamless integration between your on premise servers and the AWS Infrastructure
+
+
+3.AWS Database Services
+***********************
+RDS-->Relational Database Management Services
+Aurora-->Amazon build database Based on MySQL, but better performance than MYSQL(5 times faster)
+DynamoDB-->Non Relational Database Management Service
+ElastiCache-->Set up, manage and scale a distributed cache-in environment in the cloud.
+RedShift--> fully managed petabyte-scale data warehouse service
+
+4.AWS Networking Services
+**************************
+VPC(Virtual private cloud)--> Virtual Network where in you launch AWS resources(EXample-->VPN)
+
+Direct Connect--> Direct Connect is a leased line using which you can directly connected to the AWS Infrastructure.
+Route 53--> Route53 is a Domain Name System
+
+5.AWS Management Services
+*************************
+CloudWatch--> CloudWatch is a cloud monitoring tool.
+CloudFormation-->This service is used to templatize the AWS infrastructure(Ex QAPEnvironmen,Dev Environmet , Production Env)
+CloudTrail-->It is a logging service from AWS
+CLI-->CLI is a command line tool which is a replacement to the GUI of AWS
+OpsWorks-->A configuration management tool
+Trusted Advisor--> Trusted Advisor is a personal assistant to you in the AWS Infrastructure
+
+6.AWS Security Services
+***********************
+IAM-->Identification and Authentication Management tool.
+********************************************************
+1.IAM is a web service that helps you securely control access to AWS resources for your users.
+   You use IAM to control who can use your AWS resources(authentication) and what resources they can use
+   and in what ways(authorization)
+2.Components of IAM
+  *****************
+  1.Users
+     LAB: username: praneeth and Custom Password : Praneeth@11
+          Access Key ID : AKIAIDGP42YQQPW334EQ
+          Secret Access Key: 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
+  2.Groups
+  3.Roles
+  4.Policies
+3.MFA - Multi Factor Authentication(OTP)
+*****************
+KMS-->Key Management Services --> Create and manage encryption keys to encrypt your data
+
+
+7.AWS Application Services
+**************************
+SES(Simple Email Service)-->Bulk emailing service
+SQS(Simple Que Service)-->Queuing service which acts as a buffer.
+SNS(Simple Notfication service)-->Notification service based on triggers
+
+8.Migration
+************
+Cloud Migration is the process of moving data, apllications or other business elements from an organizations
+onsite computers to ther cloud, or moving them from one cloud environment to another.
+
+Migration Strategies For AWS
+****************************
+Re-Hosting
+Re-Platforming
+Re-Purchasing
+Re-Factoring
+Retiring
+Retaining                                          
+
+
+****************************************************************************************************
+1.Cloud Computing
+*****************
+It is the use of remote servers on the internet to store,manage and precess data rather than a local server or your personal server.
+1.Put your data on cloud Servers and voila! No more buying expensive servers
+2.Scalability
+3.No worries about the underlying infrastructure
+I)Service Models
+**************
+1.IaaS(Infrastructure as a Service)
+*************************************
+1.Provides virtualizes computing resources over the internet
+2.No worries about the underlying physical machine
+3.Abstract the user from the physical machine
+---------------------------------------
+2.PaaS(Platform as a Service)
+*****************************
+1.Not control over the underlying architecture including operating systems,storage,servers etc
+2.The clound provider gives the ability to the customer to deploy customer created application using prigramming languages,
+  tools etc that are provided by the cloud provider.
+---------------------------------------
+3.SaaS(Software as a Service)
+*****************************
+1.Cloud Provider leases applications or softwares which are owned by them to its client
+2.Example: Gamil and Salesforce.com provides the CRM(Cutomer Relation Manager) on a cloud infrastructure to its client and
+  charges them for it, but the software is owned by the salesforce company only.
+
+******************************
+II)Deployment Models
+********************
+1.Public Cloud
+2.Hybrid Cloud
+3.Private Cloud
+
+III)Advantages of Cloud Computing
+**********************************
+1.No Upfront Costs
+2.Fast Implementation
+3.Instant Scalability
+4.Access AnyWhere
+5.MaintenanceFree
+6.Better Security
+
+IV)Cloud Providers
+******************
+1.Amazon WebServices(31% Share all over the global)--Ex:NetFlix,Quora
+2.Google Cloud Platform
+3.Microsoft Azure(11% Share)
+4.DigitalOcean
+5.IBM Cloud
+6.Terremark
+7.openstack
+8.liquidweb
+9.vmware
+
+What is AWS Config?
+*******************
+1.Retrive Configurations of one or more resources
+2.Retrive historical Configurations of one or more resources
+3.Produces a snapshot of the current configurations of the supported resources
+4.Evaluate your AWS resource configurations for desired settings
+5.Sends notifications whenever a resource is created,modified, or deleted
+6.shows relevant relationships between resources
+
+
+
+Key pair name-praneethkey
+
+public ip-18.207.203.83
+
+Public DNS 	ec2-18-207-203-83.compute-1.amazonaws.com
+User name 	Administrator
+Password 	
+CMxZyF(AwThuxbP*q75eL&X9ZwCDLuUg
+
+
+Bucket
+******
+BucketName:mywebapp.praneethbindu.com
+
+BucketPolicy
+*************
+
+{
+  "Id": "Policy1549463732148",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1549463729345",
+      "Action": [
+        "s3:GetObject"
+      ],
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::mywebapp.praneethbindu.com/*",
+      "Principal": "*"
+    }
+  ]
+}
+
+
+****************************************************************************************
+
+AWS and DevOps
+**************
+Step1: create one ubuntu instance and covert .pem into .ppk and lounch ubuntu server
+       
+commands: 
+********
+>ubuntu
+>sudo apt-get update (to update ubuntu server
+>sudo apt-get install default-jdk (install java in ubuntu server)
+Install Jenkins
+***************
+>sudo wget -q -O - https://pkg.jenkins.io/debian/jenkins-ci.org.key | sudo apt-key add -
+>sudo echo deb https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list
+>sudo apt-get update
+>sudo apt-get install jenkins
+
+Goto instance and click on Description tab and click on --  launch-wizard-2 
+goto Inbound tab and Click on Edit select All TCP and Anywhere and save
+
+copy instance ipaddress(IPv4 Public IP) and paste in browser with port 8080
+-->http://3.80.131.121:8080 (Jenkins is lounched)
+
+Jenkins is opened
+*****************
+Copy jenkins path in ubuntu server cmd 
+
+>sudo cat /var/lib/jenkins/secrets/initialAdminPassword (we will get password i.e ==> a746a5aced1b4749a7f243360faa4dad)
+
+Step2: create one more ubuntu instance(test server - slave) and covert .pem into .ppk and lounch ubuntu server
+
+install docker
+install java
+install chrome browser
+install chrome driver
+install selenium
+
+ 
+      
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

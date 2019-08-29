@@ -1,0 +1,1220 @@
+DEVOPS(Developer and Operater)
+******************************
+DevOps is a software development approach which involves Continuous Development, Continuous Testing,
+Coutinuous Integration , Continuous Deployment and Monitoring of the software throughout its development lift cycle.
+*******************************
+1.Modules
+********
+Linux Essentials
+Version Control System--GIT(Software Configuration Management)
+Build Management--MAVEN
+Continuous Integration ---JENKINS
+Configuration Management ---ANSIBLE
+Virtualization --- CONTAINER(DOCKER)
+Cloud Computing ---AWS
+Scripting --PYTHON(ShellScripting)
+******************************************
+2.Software Configuration Management
+***********
+ 1.SCM is a process of tracking and controlling changes in the software
+ 2.The goals of SCM are generally
+    *Teamwork
+    *Defect tracking
+    *Configuration auditing
+    *Process management
+SCM Terminologies
+******************
+1.Server/Client
+2.Repository
+3.Workspace
+4.Branch
+5.Checkin(in Git --> commit)/Checkout
+6.Revision
+7.BaseLine
+****************************************
+GitHub == GitLab == BitBucket - Version Control Websites
+
+3.GIT
+*****
+1.In Git Everything is a workspace
+2.Every workspace will have a copy of the repository
+3.central workspace(store and share)-->Bare Repository
+4.user/local worksplace(modify/edit , store & share) --> Non Bare Repository 
+
+******************************************
+4.GIT commands
+***************
+1.git config --global user.name "PraneethKumarManala"
+2.git config --global user.email "praneethmanala@gmail.com"
+3.git config --global push.default simple
+4.git config -list
+5.mkdir central.git
+6.git init --bare(to create central repository)
+7.git clone central.git newworkspace01(go to back open bash here)
+8.touch 1.java (got to newworkspace01 open bash here)
+9.ls
+10.git status
+11.git add .(putting in stage area)
+12.git commit -m(mandatory) "this is our first commit"
+13.git status
+14.git log(gives commit Id's)
+15.git show d9d53af(commitid first 5 letters)
+16.git push(our workspace to central.git)
+17.git pull(central workspace to local workspace)
+18.git log -1
+   git log --oneline
+19.git log --oneline --grep "workspace"
+   git log --oneline --grep "commit"
+20.git log branchname
+21.touch .gitignore
+22.echo "1.class" > .gitingnore
+23.cat .gitignore
+
+Branching
+*********
+For the same product if you want to do different releases with just small changes in 
+the content of the product you are going to new release and every thing is one product
+and one central repository
+
+24.git branch (master branch is the default branch)
+25.git branch win(new branch name) (to create new branch)
+26.git checkout win(switch to another branch)
+
+Merge:
+******
+Merge The changes present in win branch to any other branch
+
+27.git merge win master (form win branch to master branch)
+28.git push -u --all (Push every thing to the central repository)
+29.git cherry-pick <committed>
+
+Stashing Commited changes(Backup)
+***************************
+30.git stash(To do UNDO of any file)
+31.git stash list(To do backup)
+32.echo "Idea 1" > 8.java
+   echo "Idea 1" > 9.java
+33.cat 8.java
+   cat 9.java
+34.git stash apply stash@{1} ---> It gives the Backup data
+   git stash clear
+   git stash list
+
+Reverting Changes
+*****************
+35. git reset --soft(UNDO the changes in repository)
+36. git reset --mixed (UNDO the chages in Staging and repository)
+37. git reset --hard  (UNDO the chages in staging and repository and Working directory)
+
+Tags
+****
+Git has the option to tag a commit in the repository history so that you find it easier at a
+later point in time
+
+38.git tag -a Release3.1.2 -m "test commit for release 3.1.2 version" 6eef350
+39.git tag
+40.git show Release3.1.2(same as -->git show 6eef350)
+41.git push --tags
+42.git tag -d Release3.1.2 
+
+Repository
+***********
+.git is nothing but our repository
+43. ls -la(shows .git i.e repository)
+
+Download or clone form GitHub
+********************************
+
+Go to GIT Folder (downloads the project From github)
+44.git clone https://github.com/PraneethKumarManala/Automation_Cucumber.git newworkspace05
+
+GIT
+****
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/PraneethKumarManala/Cucumber-Demo-framework.git
+git push -u origin master
+
+
+*********************************
+GIT(commands)
+****************
+
+GIT(Distributed Version Control System)
+*****
+git config --global user.name "praneethkumarManala"
+git config --global user.email "praneethmanala@gmail.com"
+git init
+git add .
+git commit -m .
+git status
+git remote add origin https://github.com/PraneethKumarManala/hellow-world.git
+git push -u origin master
+git log
+git --help
+
+git clone https://github.com/PraneethKumarManala/hellow-world.git
+
+Branch
+*******
+git branch mynewBranch
+git checkout mynewBranch
+git add .
+git commit -m .
+git push -u origin mynewBranch
+
+merge
+******
+git checkout master
+git merge mynewBranch
+git push -u origin master
+
+delete branch
+**************
+
+git branch -d mynewBranch (delete from local)
+git push origin --delete mynewBranch(delete from origin)
+
+TAGS
+*****
+git checkout master(git checkout branchname)
+git tag v1.0
+git tag
+git tag -a v1.1 -m "tag for release ver 1.1"
+git tag
+git show v1.0
+git push origin v1.0
+
+Delte tags
+***********
+git tag -d v1.0(local)
+git push origin -d v1.0(remote)
+
+git tag --delete v1.1(local)
+git push origin -d v1.1(remote)
+
+Delete multiple tags
+********************
+git tag -d v1.0 v1.1
+git push origin -d v1.0 v1.1
+
+
+
+
+
+
+
+
+
+
+
+*******************************************************************************************************
+
+
+****************************************************************************************************************************************************
+2.Build Automation Tool (MAVEN,ANT)
+*******************************
+1.Maven Build LifeCycle
+************************
+A Maven build follow a lifecycle
+***********************************
+1.Default lifecycle(default goals of maven)
+   1.generate-sources/generate-resources
+   2.compile
+--->compile: converting test1.java file to test1.class File to understand system language 
+   3.test 
+--->(execute correspoding test1.class files)
+   4.package
+--->Package is assemply step create a deliverable to a project
+    combine all .class files and create a single deliverable in the formate of
+     -->jar(basic formate of java file , jar==>javaarchive which contains one or more .class files )
+     -->war(war==>web archive ,web application )
+     -->ear(ear==> enterprice based web archave,no differance between war and ear only it is company eterpriced version or licenced version)
+   5.install
+--->Project A --> A.jar
+    Project B --> B.jar
+    (not a need of all projects)
+   6.deploy
+--->Taking that particular deliverables (.jar file in package step) of your project put into particular location based on what you have specified so that your application can be accessed from that location
+2.There is also a Clean (delete all runtime files that are .jar | .class files ) ,
+   Site lifecycle (gives the documentation)
+
+2.Example Maven Goals
+-*******************
+
+1. mvn install --> Invokes generate* and compile,test,package,integration-test,install
+2. mvn clean --> invokes just clean
+3. mvn clean compile --> Clean old builds and execute generate*,compile
+4. mvn compile install --> Invokes generate*,compile,test,package,install
+5. mvn test clean --> Invoke generate*,compile ,test then cleans
+
+3.Standard Directory Layout
+******************************
+src
+   \main
+      \java
+        \1.java
+        \2.java
+      \resources
+   \test
+      \java
+         \test1.java
+         \test2.java
+      \resources
+pom.xml
+
+*************************************
+4.Project Name (GAV--> groupID,artifactID,version)
+********************
+1.Maven uniquely identifies a project using:
+   --> groupID: Arbitary project grouping identifier(no spaces or colons)
+        . Usually loosely based on java package   
+   --> artifactId: Arbitary name of project (no spaces or colons)
+   --> version: Version of project
+        . Format(Major).(Minor).(Maintanance)
+        . Add '-SNAPSHOT' to identify in development
+*******************************************************
+5.Maven Environment SetUp
+**************************
+JAVA_HOME
+M2_HOME
+M2
+MAVEN_OPTS=-Xms256m -Xmx 
+PATH="%PATH%";%M2%
+****
+mvn archetype:generate
+(it creates a dummy project or sample templet of maven project)
+
+*************************************************************************
+5.pom.xml
+********
+<project>
+  <groupid> </>
+  <artifactid> </>
+  <version> </>
+
+  <build>
+
+     <plugins>
+         <plugin>
+               <groupid> </groupid>
+               <artifactid> </artifactid>
+               <version> </version>
+               <executions>
+                   <execution>
+                        <phase>compile</phase>     
+                        <configuration>
+                                  <suiteXmlFiles>
+				  <suiteXmlFile> testng.xml</suiteXmlFile>	  
+				  </suiteXmlFiles>
+                        </configuration>
+                    </execution>
+
+               </executions>
+         </plugin>
+
+         <plugin>
+               <groupid> </groupid>
+               <artifactid> </artifactid>
+               <version> </version>
+               <executions>
+                   <execution>
+                        <id>execution</id>
+                        <phase>compile</phase>   
+                         <goals>
+                           
+                             <goal>generate</goal>
+
+	                 </goals>  
+                        <configuration>
+                                  	<projectName>ExecuteAutomation</projectName>
+					<outputDirectory></outputDirectory>
+                        </configuration>
+                    </execution>
+
+               </executions>
+         </plugin>
+
+    </plugins>
+  </build>
+
+</project>
+
+**********************************************************************************
+6.SNAPSHOT
+***********
+which indicates that the Project under development
+
+cmd==>
+> mvn pacakge -pl mod1
+> mvn package -pl mod2
+
+
+****************************************************
+
+7.MultiModule
+*****************
+
+create parent pom.xml
+*************************
+ <groupId>charter</groupId>
+  <artifactId>cucumber</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>pom</packaging>
+ 
+ <name>cucumber</name>  
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+  <modules>
+  <module>mod1</module>
+  <module>mod2</module>
+  </modules>
+
+To create a build go to cmd==> >mvn install
+
+------------------------------------------
+mod1 (child pom.xml)
+****
+  <groupId>charter</groupId>
+  <artifactId>mod1</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mod1</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+   <parent>
+  <groupId>charter</groupId>
+  <artifactId>cucumber</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  </parent>
+
+**************************************
+mod2 (child pom.xml)
+****
+  <groupId>charter</groupId>
+  <artifactId>mod2</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>mod2</name>
+  <!-- FIXME change it to the project's website -->
+  <url>http://www.example.com</url>
+
+   <parent>
+  <groupId>charter</groupId>
+  <artifactId>cucumber</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  </parent>
+
+**********************************************************************************
+8.Deployment Automation
+**************************
+1.You have your project deliverible i.e jar|war|ear  now if you want that to be put into particular production place
+from which you able to access is called Deployment
+2.we need webserver for deployment 
+ 
+WebServers
+**********
+1.Apache 8074570991
+2.jboss
+
+***********************************************************************
+9.Maven Update Version
+**********************
+Go to parent pom.xml and run below commands to update version
+--------------------------------------------------------------
+1.mvn versions:set -DnewVersion=your_new_version
+  ex: 1.mvn versions:set -DnewVersion=2.3.1
+      2.mvn clean install(update the verisons in individual modules i.e mod2-2.3.1.jar files)
+
+2.mvn versions:commit (it is the final release of the project i.e no changes in the project )
+3.mvn versions:revert (it go to back version and shows the previous version )
+
+***************************************************************
+10.Maven Documentation -Building Own Site
+-------------------------------------------
+> Mvn site
+
+**************************************************************************************
+3.Jenkins (Continuous Integration tool)==> Bamboo (Also a Continuous Integration tool but it is a paid tool)
+**************************************************************************************************************
+1.Developer1-->Unit Test-->commit-->Developer build1-->10AM
+  Developer2-->Unit Test-->commit-->Developer build2-->12PM
+  Developer3-->Unit Test-->commit-->Developer build3-->2PM
+  Developer4-->Unit Test-->commit-->Developer build4-->4PM
+2.cut off time : 6PM
+3.Integrate all Developer builds
+4.Full Build / Nightly Build
+5.QA--> testing
+******************
+Dev(s)-->unit test--> commit
+Integrate teh current changes
+Increamental Build
+Full Build / Nightly Build
+******************
+Continuous Integration
+**********************
+1.Repository : poll scm (it monitor if any commits are done by developers , polling happens at every particular time ex: every 10min)
+2.Intigrate
+3.Build
+  --compile
+  --test
+  --package
+  --deploy
+  --code coverage
+  --code analysis
+*************************************
+SetUp
+********
+1.Global System Configuration
+  --tools
+  --environmental variables
+2.Node Configuration
+3.Plugin Configuration
+4.Job Configuration
+  - Where to run (label)
+  - When to run 
+     - Shedule run
+     - on demand
+  - what it has to do
+
+****************************************
+Lable
+*****
+Lable is nothig but a group of machines that we will be creating and when we want to run
+a job we will give the name of that lable or the group so that when jenkins is trying to
+run it will check out of that lable what and all are the machines there and in that 
+which machine is available and it will directly use it . such a kind of group is called lable.
+
+*******************************************
+cronprttern
+***********
+
+1.MINUTE Minutes within the hour (0–59)
+2.HOUR	 The hour of the day (0–23)
+3.DOM	 The day of the month (1–31)
+4.MONTH	 The month (1–12)
+5.DOW	 The day of the week (0–7) where 0 and 7 are Sunday.
+
+* * * * *
+
+Examples:
+********
+1.# every fifteen minutes (perhaps at :07, :22, :37, :52)
+ 
+   H/15 * * * * 
+
+2.# every ten minutes in the first half of every hour (three times, perhaps at :04, :14, :24)
+
+   H(0-29)/10 * * * * 
+
+3.# once every two hours at 45 minutes past the hour starting at 9:45 AM and finishing at 3:45 PM every weekday.
+
+   45 9-16/2 * * 1-5
+
+4.# once in every two hours slot between 9 AM and 5 PM every weekday (perhaps at 10:38 AM, 12:38 PM, 2:38 PM, 4:38 PM)
+
+   H H(9-16)/2 * * 1-5 
+
+5.# once a day on the 1st and 15th of every month except December
+
+   H H 1,15 1-11 *
+
+6. At 8.30 PM (17th Oct,Nov and Dec 2018 )
+  
+   30 20 17 10-12 *
+
+7. every month every day at 8.30PM
+  
+   30 20 * * *   
+  
+*********************************************************************************
+Continuos Integration
+***********************
+1. Git Repository --> 
+2. frequency of polling
+3. update the workspace
+4. Build  
+
+***********************************
+1.JaCoCo
+2.SonarQube Integration with maven -- port 9000 
+  http://localhost:9000
+
+*********************************
+
+Artifactory runs on port 8081
+1.we can place our code(repository) in artifactory 
+ 
+***********
+
+
+
+DockerHub
+************************************************
+username : praneethmanala
+Email: praneethmanala@gmail.com
+password: Praneeth@11
+***********************************************
+
+
+
+4.Docker(Version 18.03.0-ce)
+*************
+1.Docker makes the process of application deployment very easy and efficent and resolves
+  a lot of issues related to deploying applications.
+2.Docker is a tool designed to make it easier to deploy and run applications by using containers
+3.Contatiners allow a developer to package up an application with all of the parts it needs,
+  such as libraries and other dependencies, and ship it all out as one package.
+4.An application inside a container can run on any system that has Docker installed.
+  So there is no need to build and configure app multiple times on different platforms.
+5.With Docker you test your application inside a contatiner and ship it inside a container,
+  This means the environment in which you test is identical to the one on which the app 
+  will run in production.
+6.Like Git, Docker has in-built version control system
+  Docker containers work just like GIT repositories, allowing you to commit changes to your
+  Docker images and version control them.
+7.Docker allows faster and more efficeint deploymwnts without worrying about running your app
+  on different platforms.(It increases productivity many folds)
+8.Docker Commands
+******************
+1.Basic
+********
+1.>docker
+2.>docker version
+3.docker -v (docker --version)
+4.docker info
+5.docker --help
+6.docker login
+
+2.Images
+*********
+1.docker images
+2.docker pull(ex: docker pull ubuntu --> it will download the ubuntu on existing system)
+3.docker rmi (it will use to delete the downloded application )
+4.docker rmi --help
+5.docker images -q
+6.docker rmi 94e814e2efa8 ---> removes the image 
+
+
+
+3.Containers
+************
+1.docker ps
+2.docker run ubuntu
+3.docker run --help
+4.docker run -it ubuntu 
+Open new commant promt and run below commands
+3.docker start 946d7a6v656d
+4.docker stop 946d7a6v656d
+
+4.System
+********
+1.docker status
+2.docker system df
+3.docker system prune
+
+**************************************************
+1.What are docker images
+************************
+Docker images are templates used to create Docker containers.
+Container is a running instance of image .
+
+1.Go to Docker Hub select any image
+  command : docker pull ubuntu:18.04
+            docker run ubuntu
+            docker ps -a
+            docker run --name MyUbuntu1 -it ubuntu bash
+          ------->  Go to another cmd
+            docker ps
+            docker inspect ubuntu
+            docker stop MyUbuntu1
+            docker rmi -f ubuntu (remove ubuntu forcefully) 
+2.What are docker Containers
+*****************************
+Container is a running instance of image .
+commands
+***********
+1.>docker pull hello-world (it will pull from the repository to local system)(or) 
+  docker run hello-world(it will pull from the repository to local system and run)
+2.docker ps -a
+3.docker run --name MyUbuntu1 -it ubuntu bash
+4.docker ps
+5.docker start MyUbuntu1(MyUbuntu1 is the container)
+6.docker stop MyUbuntu1
+7.docker top MyUbuntu1
+8.docker stats MyUbuntu1
+9.docker attach MyUbuntu1 and type ls
+10.docker kill MyUbuntu1
+11.docker rm MyUbuntu1
+12.docker ps
+13.docker history
+**************************************
+Docker on Linux Machine
+**********************
+>sudo yum -y update
+>sudo yum install -y docker
+>clear
+>docker
+>docker --version
+>docker info
+>sudo service docker start
+>docker info
+>clear
+>docker imges
+>docker ps
+>docker ps -a
+>docker run hello-world
+>sudo service docker stop
+>sudo yum remove docker
+
+
+
+
+3.How to run jenkins on Docker Container
+************************************
+commnds
+*******
+1.docker pull jenkins
+2.docker images
+3.docker images -q
+4.docker run -p 8080:8080 -p 50000:50000 jenkins
+5.docker run --name MyJenkins2 -p 8080:8080 -p 50000:50000 -v /Users/pmanala/Desktop/Jenkins_Home:/var/jenkins_home jenkins
+*********************************************
+4.DockerFile
+****************
+A text file with instructions to build image
+Automation of Docker Image Creation
+
+Step1:Create a file name Dockerfile (text file)
+go to command >docker build -t myimage1:1.0 .
+
+Step2: Add instructions in Dockerfile
+
+step3: Build dockerfile to create images
+
+step4: Run images to create container
+ 
+************************************************************************
+
+Configuration Management Tool
+
+5.Puppet(pull configuration) ==> Ansible(push configuration) ==> Chef(pull configuration) ==> SALTSTACK(push configuration)
+*************************************************************
+==>1. Configuration Management is the practice of handling changes systematically so that
+    a system maintains its integrity over the time.It allows to an accurate historical record of 
+    system state. 
+             
+2.Puppet is a Configuration Management Tool that is used for
+  -Deploying
+  -Configuring
+  -Managing servers.
+  It uses a Master-Slave architecture. 
+
+*****************************************************************************************************
+
+Simple CI/CD 
+*************
+
+Code----->Git--->Maven---->Jenkins---->AWS EC2
+
+Step1: Install JAVA and Jenkins in EC2 Instance
+***********************************************
+1.Create RedHat EC2 instance
+2.install MobaXterm for lounching EC2 instance use .pem and public IP
+3.>sudo su -
+
+  >yum -y install java-1.8* (install java on EC2 instance)
+  >find /usr/lib/jvm/java-1.8* | head -n 3
+  >vi .bash_profile (update bash profile)
+    add:  JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-0.amzn2.x86_64
+          PATH=$PATH:$JAVA_HOME:$HOME/bin
+          (to save click ESC button and enter :wq) 
+  >source ~/.bash_profile
+  >echo $JAVA_HOME (gives the java home path = /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64)
+
+
+4.Install Jenkins
+  yum -y install wget
+  wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+  rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+  yum -y install jenkins
+
+  # Start jenkins service
+  systemctl start jenkins
+
+  # Setup Jenkins to start at boot,
+  systemctl enable jenkins
+  cat /var/lib/jenkins/secrets/initialAdminPassword (will get password)
+
+5. Go to ec2 instance and add port 8080 (go to launch-wizard-1 and add port 8080)
+
+6.Go to firefox and http://localIPAddress:8080
+  
+
+7. create username and password
+   username - praneeth
+   password - praneeth
+
+Step2: Install Maven and GIT in EC2 Instance
+********************************************
+1.Link : http://maven.apache.org/download.cgi
+  >wget mirrors.estointernet.in/apache/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz
+  >tar -xvzf apache-maven-3.6.0-bin.tar.gz
+  >cd apache-maven-3.6.0
+  >pwd (Gives the maven path) --> /root/opt/maven/apache-maven-3.6.0
+  >cd /root
+  >ls
+  >ls -la
+  >vi .bash _profile
+ 
+  
+
+2.Setup M2_HOME and M2 paths in .bash_profile of user.
+  M2_HOME=/opt/maven/apache-maven-3.6.0
+  M2=$M2_HOME/bin
+  JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-1.8.0.191.b12-1.el7_6.x86_64
+  M2_HOME=/opt/maven/apache-maven-3.6.0
+  PATH=$PATH:$JAVA_HOME:$M2_HOME:$M2:$HOME/bin  
+
+3.Install GIT
+  # yum install git -y
+
+check point
+***********
+check maven version
+
+# mvn --version
+
+Step3: Configuration
+********************
+1.Login to Jenkins console
+
+2.Install maven and git plugin without restart
+  Go to Manage Jenkins --> manage plugins --> Available --> "Maven Invoker"
+  Go to Manage Jenkins --> manage plugins --> Available --> "github"
+
+3.Set maven and git path
+  Manage Jenkins --> Global Tool Configuration --> Maven
+  Manage Jenkins --> Global Tool Configuration --> git
+ 
+Step4: Run a test job
+*********************
+1.Create "new Item"
+
+2.Enter an item name - hello-world
+   choose maven project
+
+3.select "git" as source code management and give below mavn project
+  git--> http://github.com/
+  Goals--> install package
+
+4.save your job
+
+5.Build job
+
+6.Check Console Output
+
+Step5:Setup and Configure Tomcat Server
+***************************************
+1.Lounch a RedHat Linux Server
+2.Install Java and set Path
+  >java -version
+  >pwd
+  >cd /opt
+  >ls
+  
+3.Download Tomcat package from http://tomcat.apache.org/download-80.cgi
+  >wget http://mirrors.estointernet.in/apache/tomcat/tomcat-8/v8.5.38/bin/apache-tomcat-8.5.38.tar.gz
+  >ls (it gives tomcatpath i.e  apache-tomcat-8.5.38.tar.gz)
+ 
+
+4.Copy and extract giz file under to/opt/tomcat directory
+  >tar -zvxf apache-tomcat-8.5.38.tar.gz  
+  >ls (gives tomcat extracted path i.e apache-tomcat-8.5.38)
+  >cd apache-tomcat-8.5.38
+  >clear
+  >ls
+  >cd bin
+  >ls
+  >ps -ef | grep tomcat
+  >ls -ltr
+  >chmod +x startup.sh
+  >chmod +x shutdown.sh
+  >pwd (gives the path i.e /opt/apache-tomcat-8.5.38/bin)
+  >echo $PATH
+  >ln -s /opt/apache-tomcat-8.5.38/bin/startup.sh /usr/local/bin/tomcatup
+  >ln -s /opt/apache-tomcat-8.5.38/bin/shutdown.sh /usr/local/bin/tomcatdown
+  >tomcatup
+  >ps -ef | grep tomcat
+  >cd .. 
+  >ls
+  >cd conf
+  >ls
+  >vi server.xml
+  >replace 8080 by 8090 
+  >:wq!
+  >tomcatdown
+  >tomcatup
+  >find / -name context.xml
+  >vi /opt/apache-tomcat-8.5.38/webapps/host-manager/META-INF/context.xml
+  >vi /opt/apache-tomcat-8.5.38/webapps/manager/META-INF/context.xml
+  >tomcatdown
+  >tomcatup
+ 
+
+
+5.Add below users to tomcat-user.xml file under conf directory in tomcat
+  <role rolename="manager-gui"/>
+  <role rolename="manager-script"/>
+  <role rolename="manager-jmx"/>
+  <role rolename="manager-status"/>
+  <user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+  <user username="deployer" password="deployer" roles="manager-script"/>
+  <user username="tomcat" password="s3cret" roles="manager-gui"/>
+6.Change default port number(8080)to 8090 
+7.Start tomcat by using startup.sh under bin directory
+8.52.5.3.142:8090/webapp/
+
+
+
+Step6:Install Docker
+********************
+1.sudo su -
+2.yum install docker -y
+
+ 
+ 
+
+
+*********************************************
+Linux - Shell Scripting
+**********************
+1.Linux commands
+****************
+>> sudo du -
+>> pwd
+>> ll
+>>ls /
+>>mkdir /TestFolder1
+>>ll
+>>cd /TestFolder1
+>>touch file1 file2 file3
+>>mkdir folder1
+>>mkdir folder2
+>>mkdir folder3
+
+permissions
+************
+
+- rw-      r--     r--   --> if line starts with -(dash) i.e file 
+  Owner    Group   All
+
+r=4
+w=2
+x=1
+
+
+
+d rw- r-- r--   --> if line starts with d i.e directory 
+
+cat    --> to read the file
+.(dot) --> current directory
+
+
+
+
+Add user
+**********
+>> useradd testuser1
+>> passwd testuser1
+   give any password praneeth
+>>cat /etc/passwd
+>> ls /TestFolder1/
+>> ll /TestFolder1/
+>>exit
+>> cd /tmp/
+>>touch file1 file2 file3
+>>cd /TestFolder1/
+>>ll
+>>sudo yum install nano -y
+>>nano file1
+   This is Conf. File
+  Ctrl+X
+  Y and click on Enter button
+  ctrl+k --> to remove data in file
+>>exit
+>>cat /TestFolder1/file1
+Giving permission to any file
+***************************
+>>go to that folder
+>>cd /TestFolser1/
+>>chmod 640 file1
+
+Create .sh file
+******************
+>> mv file1 file1.sh
+>>cp file2 file2.sh
+
+remove .sh file
+******************
+>>rm file2.sh
+  y
+  clear
+
+
+>>nano file1.sh
+  
+  #!bin/bash  {#-->sharp , !--> bang , #! shebang}
+  $(HOSTNAME)
+
+>>chmod 700 file1.sh
+>>ll
+
+>>type -a cat
+>>type -a echo
+>>help echo 
+ 
+
+
+*****************************************************************
+Docker
+******
+step1: Create Amazon linux 2 AMI Instance
+*****************************************
+>>sudo yum -y update
+>>sudo yum install -y docker
+>>docker info
+>>sudo service docker start  ---> Start Docker
+>>sudo usermod -a -G docker ec2-user
+
+>>docker images
+>>docker ps
+>>docker ps -a
+>>docker run hello-world
+>>docker images
+>>docker ps
+>>docker ps -a
+>>docker pull ubuntu or >>docker pull ubuntu:18.04
+>>docker images -q
+>>docker images -f "dongling=false" 
+>>docker run image
+>>docker rmi image
+>>docker rmi -f image
+
+>>docker run ubuntu
+>>docker ps -a
+>>docker run --name MyUbuntu -it ubuntu bash  --->it opens the ubuntu 
+Go to onother tab
+>>docker ps
+>>docker rmi ubuntu
+>>docker images
+>>docker stop MyUbuntu
+>>docker rmi -f ubuntu
+>>docker images
+
+
+
+
+>>sudo service docker stop --> stop docker
+
+>>sudo yum remove docker   --> uninstall docker
+
+
+>>systemctl start docker
+>>docker login 
+  username:praneethmanala
+  password:Praneeth@11
+
+Jenkins on Docker
+****************
+>>docker pull jenkins
+>>docker run -ti -p 8080:8080 -p 50000:50000 -v jenkins-data:/var/jenkins_home jenkins
+ (Edit security Group as port no 8080 in AWS instance )
+>>docker stop jenkins
+
+
+Run Containers
+**************
+>>docker run -it -p 80:80 ubuntu /bin/bash
+
+if we want to run out from the container
+click ctrl+p+q
+>>docker ps
+>>docker exec -it 970ac77fc280 /bin/bash 
+>>cat /etc/lsb-release
+
+
+To start and start Docker containers
+************************************
+>>systemctl start docker
+>>docker pull httpd
+>>docker ps -a
+>>docker run -d --name appcontainer httpd:latest
+>>docker ps -a  --->Shows all containers
+>>docker ps     --> shows only running containers
+>>docker run -d -p 8080:80 --name app-server httpd:latest
+>>docker ps
+>>docker stop app-server
+>>docker rm app-server
+
+
+To Go into the container
+************************
+>>systemctl start docker
+>>docker pull httpd
+>>docker ps -a
+>>docker run -d --name app-server httpd:latest
+>>docker ps -a  --->Shows all containers
+>>docker ps     --> shows only running containers
+>>docker run -d -p 8080:80 --name app-server httpd:latest
+>>docker exec -it app-server /bin/bash
+
+1282FBjs
+
+
+Simple Devops Project-2
+------------------------
+Ansible :
+********
+1.Launch linux EC2 instance
+2.Update your EC2 instance
+  yum update -y
+3.Add a third party repository names EPEL(Extra Packages for Enterprise linux)
+4.Install Ansible 
+  # yum install ansible
+  # ansible --version (2.4.2.0)
+ 
+5.Enable password less authentication b/w Ansible and tomcat server
+6.Install "publish over ssh" plug in on jenkins server
+7.Write a playbook to copy jar/war file on to tomcat server
+ 
+    playbook
+    ********
+    demo.yml file
+    *************
+    hosts: web-servers
+    become: true
+    tasks:
+        name: copy war onto tomcat server
+        copy:
+          src:  /opt/playbooks/webapp/target/webapp.war
+          dest: /opt/apache-tomcat-8.5.12/webapps
+
+
+
+8.Modify Jenkins job to copy arifacts and initiate Ansible playbook
+
+
+
+
+
+Simple DevOps Project -3
+************************
+https://github.com/ValaxyTech/DevOpsDemos/blob/master/SimpeDevOpsProjects/Project-3.MD
+
+1.    Launch an EC2 instance for Docker host
+
+2.    Install docker on EC2 instance and start services
+
+yum install docker
+service docker start
+
+3.    create a new user for Docker management and add him to Docker (default) group
+
+useradd dockeradmin
+passwd dockeradmin                 
+(username -- dockeradmin 
+ password -- dockeradmin)
+usermod -aG docker dockeradmin  --> add user to the docker
+
+4.    Write a Docker file under /opt/docker
+
+>>cd opt
+>>mkdir docker
+>>cd docker
+>>vi Dockerfile
+
+copy below lines in Dockerfile
+
+            ### vi Dockerfile
+            # Pull base image 
+            From tomcat:8-jre8 
+
+            # Maintainer
+            MAINTAINER "valaxytech@gmail.com" 
+
+            # copy war file on to container 
+            COPY ./webapp.war /usr/local/tomcat/webapps
+
+:wq!
+>>cat Dockerfile
+
+
+
+5.    Login to Jenkins console and add Docker server to execute commands from Jenkins
+    Manage Jenkins --> Configure system --> Publish over SSH --> add Docker server and credentials
+
+6.    Create Jenkins job
+
+A) Source Code Management
+Repository : https://github.com/ValaxyTech/hello-world.git
+Branches to build : */master
+
+B) Build Root POM: pom.xml
+Goals and options : clean install package
+
+C) send files or execute commands over SSH Name: docker_host
+Source files : webapp/target/*.war
+Remove prefix : webapp/target
+Remote directory : //opt//docker
+Exec command[s] :
+
+docker stop valaxy_demo;
+docker rm -f valaxy_demo;
+docker image rm -f valaxy_demo;
+cd /opt/docker;
+docker build -t valaxy_demo .
+
+D) send files or execute commands over SSH
+Name: docker_host
+Exec command : docker run -d --name valaxy_demo -p 8090:8080 valaxy_demo
+
+7.    Login to Docker host and check images and containers. (no images and containers)
+
+8.    Execute Jenkins job
+
+9.    check images and containers again on Docker host. This time an image and container get creates through Jenkins job
+
+10.    Access web application from browser which is running on container
+
+<docker_host_Public_IP>:8090
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

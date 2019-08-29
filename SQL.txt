@@ -1,0 +1,243 @@
+package com.automation.dbvalidations;
+
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.automation.accelarators.Actiondriver;
+import com.automation.businessfunctions.CommonFunctions;
+import com.relevantcodes.extentreports.ExtentTest;
+
+
+
+
+public class SqlServer extends Actiondriver {
+
+
+	
+	public void SQLProjectEstimate(ExtentTest logger)
+	{
+
+		//String connectionUrl = "jdbc:sqlserver://192.168.1.118:1433;databaseName=ETSArchPortal;Integrated Security=False;user=sa;password=Charter@123";
+		String connectionUrl = "jdbc:sqlserver://CGIH-SRV-FIS2:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		try {
+			// Load SQL Server JDBC driver and establish connection.
+			System.out.print("Connecting to SQL Server ... ");			
+			try (Connection connection = DriverManager.getConnection(connectionUrl)) {
+				System.out.println("Done.");
+				takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections Done for ProjectEstimate ", "", "", logger);
+				//Executing SQL query and fetching the result
+				Statement st = connection.createStatement();
+				String sqlStr = "select * from ProjectEstimate where ProjectEstimateSysID = "+EstimateID+";";
+				System.out.println("SQL Server EstimateID : "+EstimateID);
+				ResultSet rs = st.executeQuery(sqlStr);
+				while (rs.next()) {
+					DBProjectEstimateSysID=rs.getString("ProjectEstimateSysID");
+					log.info("ProjectEstimateSys id: "+DBProjectEstimateSysID);
+					log.info("AuthorDomainID"+rs.getString("AuthorDomainID"));
+					log.info("ApplicationSysID"+rs.getString("ApplicationSysID"));	
+					log.info("Estimate Description :"+rs.getString("EstimateDescription"));
+					if(EstimateID!=null) {
+						if(EstimateID.equals(DBProjectEstimateSysID)) {
+							takeWithoutScreenShotForPass("EstimateID", "Verify the EstimateID matching DB", "Project Estimate SysID in DB and Estimate ID in application both are matching", "<br>EstimateID : "+EstimateID, "<br>ProjectEstimateSysID : "+DBProjectEstimateSysID, logger);
+							takeWithoutScreenShotForInfo("AuthorDomainID", "Verify the Author Domain ID in Sql Server ", "AuthorDomainID is : " +rs.getString("AuthorDomainID"), "", "", logger);
+							takeWithoutScreenShotForInfo("ApplicationSysID", "Verify the Application Sys ID in Sql Server ", "ApplicationSysID is : " +rs.getString("ApplicationSysID"), "", "", logger);
+						}else {
+							takeWithoutScreenShotForFailWithoutAssert("EstimateID", "Verify the EstimateID matching DB", "Project Estimate SysID in DB and Estimate ID in application both are Not matching", "<br>EstimateID : "+EstimateID, "<br>ProjectEstimateSysID : "+DBProjectEstimateSysID, logger);
+						}
+					}else {
+						takeWithoutScreenShotForFailWithoutAssert("EstimateID", "Verify the EstimateID matching DB", "Project Estimate ID is not Created", " ", "", logger);
+
+					}
+
+				}		
+			}
+		} catch (Exception e) {
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections not connected", "", "", logger);
+			System.out.println();
+			e.printStackTrace();
+		}
+	}
+	public void SQLNonProductionAllEnvValidation(ExtentTest logger) throws Throwable
+	{
+		
+
+		String connectionUrl = "jdbc:sqlserver://192.168.1.118:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		//String connectionUrl = "jdbc:sqlserver://CGIH-SRV-FIS2:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		try {
+			// Load SQL Server JDBC driver and establish connection.
+			System.out.print("Connecting to SQL Server ... ");
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections Done for ProjectEstimateBOM ", "", "", logger);
+			try (Connection connection = DriverManager.getConnection(connectionUrl)) {
+				System.out.println("Done.");
+				//Executing SQL query and fetching the result
+				Statement st = connection.createStatement();
+				String sqlStr = "select * from projectestimatebom where projectestimatesysid="+EstimateID+" and parentprojectestimatebomsysid is null ";
+				System.out.println("SQL Server EstimateID : "+EstimateID);
+				ResultSet rs = st.executeQuery(sqlStr);
+				
+				while (rs.next()) {
+					projectestimatebomSysID=rs.getString("ProjectEstimateBOMSysId");
+					ProjectEstimateSysID=rs.getString("ProjectEstimateSysID");
+					Comments=rs.getString("Comments");
+					quantity=rs.getString("quantity");
+					
+					log.info("ProjectEstimateSysID is : "+ProjectEstimateSysID);
+					log.info("Project Estimate Bom Sys id is :"+projectestimatebomSysID);
+					log.info("Comments :"+Comments);
+					log.info("quantity :"+quantity);
+					CommonFunctions.DataInNotePadForNonProAllEnvTwo();
+				}	
+				
+				
+			}
+		} catch (Exception e) {
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections not connected", "", "", logger);
+			System.out.println();
+			e.printStackTrace();
+		}
+	}
+	public void SQLProjectEstimateBOM2(ExtentTest logger) throws Throwable
+	{
+		
+
+		String connectionUrl = "jdbc:sqlserver://192.168.1.118:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		//String connectionUrl = "jdbc:sqlserver://CGIH-SRV-FIS2:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		try {
+			// Load SQL Server JDBC driver and establish connection.
+			System.out.print("Connecting to SQL Server ... ");
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections Done for ProjectEstimateBOM ", "", "", logger);
+			try (Connection connection = DriverManager.getConnection(connectionUrl)) {
+				System.out.println("Done.");
+				//Executing SQL query and fetching the result
+				Statement st = connection.createStatement();
+				String sqlStr = "select * from ProjectEstimateBOM where ProjectEstimateSysID = "+EstimateID+" and comments is not null and quantity="+NumberOfServers2+"";
+				System.out.println("SQL Server EstimateID : "+EstimateID);
+				ResultSet rs = st.executeQuery(sqlStr);
+				
+				while (rs.next()) {
+					projectestimatebomSysID=rs.getString("ProjectEstimateBOMSysId");
+					ProjectEstimateSysID=rs.getString("ProjectEstimateSysID");
+					Comments=rs.getString("Comments");
+					log.info("ProjectEstimateSysID is : "+ProjectEstimateSysID);
+					log.info("Project Estimate Bom Sys id is :"+projectestimatebomSysID);
+					log.info("Comments :"+Comments);
+					CommonFunctions.DataInNotePad();
+				}	
+				
+				
+					if(Comments.equalsIgnoreCase(comments2))
+				{
+					takeWithoutScreenShotForPass("comments", "Verify the comments", "comments same as enterd in the application", "<br>Expected in DB : "+Comments, "<br>Actual : "+comments2, logger);
+				}else {
+					takeScreenShotForFailWithoutAssert("comments", "Verify the comments", "comments enterd in the application not matching with sql Server", "<br>Expected in DB: "+Comments, "<br>Actual : "+comments2, logger);
+				}
+			}
+		} catch (Exception e) {
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections not connected", "", "", logger);
+			System.out.println();
+			e.printStackTrace();
+		}
+	}
+	
+	public void SQLBuildDocValidation(ExtentTest logger) throws Throwable
+	{
+		
+
+		String connectionUrl = "jdbc:sqlserver://192.168.1.118:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		//String connectionUrl = "jdbc:sqlserver://CGIH-SRV-FIS2:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		try {
+			// Load SQL Server JDBC driver and establish connection.
+			System.out.print("Connecting to SQL Server ... ");
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections Done for ProjectEstimateBOM ", "", "", logger);
+			try (Connection connection = DriverManager.getConnection(connectionUrl)) {
+				System.out.println("Done.");
+				//Executing SQL query and fetching the result
+				Statement st = connection.createStatement();
+				String sqlStr = "select servername From Servers where projectestimatesysid = "+EstimateID+"";
+				System.out.println("SQL Server EstimateID : "+EstimateID);
+				ResultSet rs = st.executeQuery(sqlStr);
+				
+				while (rs.next()) {
+				
+					servername=rs.getString("servername");
+					log.info("server name in database is: "+servername);
+					
+					break;
+				}	
+				
+				
+			}
+		} catch (Exception e) {
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections not connected", "", "", logger);
+			System.out.println();
+			e.printStackTrace();
+		}
+	}
+	
+	
+	
+	public void SQLProjectEstimateBOM(ExtentTest logger) throws Throwable
+	{
+		
+
+		//String connectionUrl = "jdbc:sqlserver://192.168.1.118:1433;databaseName=ETSArchPortal;Integrated Security=False;user=sa;password=Charter@123";
+		String connectionUrl = "jdbc:sqlserver://CGIH-SRV-FIS2:1433;databaseName=ETSArchPortalQA;Integrated Security=False;user=sa;password=Charter@123";
+		try {
+			// Load SQL Server JDBC driver and establish connection.
+			System.out.print("Connecting to SQL Server ... ");
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections Done for ProjectEstimateBOM ", "", "", logger);
+			try (Connection connection = DriverManager.getConnection(connectionUrl)) {
+				
+				System.out.println("Done.");
+				//Executing SQL query and fetching the result
+				Statement st = connection.createStatement();
+				String sqlStr = "select * from ProjectEstimateBOM where ProjectEstimateSysID = "+EstimateID+" and comments is not null and quantity="+NumberOfServers+"";
+				System.out.println("SQL Server EstimateID : "+EstimateID);
+				ResultSet rs = st.executeQuery(sqlStr);
+				
+				while (rs.next()) {
+					
+				    projectestimatebomSysID=rs.getString("ProjectEstimateBOMSysId");
+					ProjectEstimateSysID=rs.getString("ProjectEstimateSysID");
+					comments=rs.getString("Comments");
+					log.info("ProjectEstimateSysID is : "+ProjectEstimateSysID);
+					log.info("Project Estimate Bom Sys id is :"+projectestimatebomSysID);
+					log.info("Comments :"+comments);
+					CommonFunctions.DataInNotePadPRAndDR();
+				
+				}	
+				
+				System.out.println("comments : "+comments);                                
+				
+				if(Comments.equalsIgnoreCase(comments))
+				{
+				
+					takeWithoutScreenShotForPass("comments", "Verify the comments", "comments same as enterd in the application", "<br>Expected in DB : "+comments, "<br>Actual : "+Comments, logger);
+				
+				}  
+				 
+				
+				else {
+					
+					takeScreenShotForFailWithoutAssert("comments", "Verify the comments", "comments enterd in the application not matching with sql Server", "<br>Expected in DB: "+comments, "<br>Actual : "+Comments, logger);
+				
+				}
+			}
+		} 
+		catch (Exception e) {
+			
+			takeWithoutScreenShotForInfo("SQLServe", "Verify the connections with SQL Server", "SQL connections not connected", "", "", logger);
+			System.out.println();
+			e.printStackTrace();
+			
+		}
+	}
+
+
+}

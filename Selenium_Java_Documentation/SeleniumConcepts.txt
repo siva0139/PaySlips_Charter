@@ -1,0 +1,1018 @@
+package com.automation.naveenSelenium;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AlertPopup {
+
+	
+	//Java Script Alert or window alert or Popups
+	
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		
+		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+		driver.manage().window().maximize();
+		driver.findElement(By.name("proceed")).click();
+		Thread.sleep(5000);
+		Alert alert=driver.switchTo().alert();
+		System.out.println(alert.getText());
+		alert.accept(); //click on ok button
+		// alert.dismiss(); //click on cancel button
+		
+		
+	}
+
+}
+****************************************************************************
+package com.automation.naveenSelenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class HandleFileuploadPopup {
+
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		
+		driver.get("https://html.com/input-type-file/");
+		driver.manage().window().maximize();
+		Thread.sleep(5000);
+		
+		driver.findElement(By.xpath("//a[@title='Close']")).click();
+		
+		driver.findElement(By.id("fileupload")).sendKeys("/Users/pmanala/Popup.txt");
+		
+	}
+}
+***********************************************************************
+package com.automation.naveenSelenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class SwitchToFrames {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		
+		driver.get("https://www.freecrm.com/index.html");
+		driver.manage().window().maximize();
+		driver.findElement(By.name("username")).sendKeys("praneethmanala");
+		driver.findElement(By.name("password")).sendKeys("praneethmanala");
+		driver.findElement(By.xpath("//input[@value='Login']")).click();
+		Thread.sleep(3000);
+		driver.switchTo().frame("mainpanel");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//a[contains(text(),'Contacts')]")).click();
+		
+	}
+
+}
+********************************************************************************
+package com.automation.naveenSelenium;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class MouseMovement {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("https://www.spicejet.com/");
+
+        Actions action= new Actions(driver);
+        Thread.sleep(3000);
+        action.moveToElement(driver.findElement(By.xpath("//a[contains(text(),'Add-Ons')]"))).build().perform();
+		Thread.sleep(3000);
+	    driver.findElement(By.xpath("//li[@id='header-addons']//ul/li[2]")).click();
+	}
+
+}
+******************************************************************************
+package com.automation.naveenSelenium;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class DragAndDrop {
+
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://jqueryui.com/droppable/");
+        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		
+		driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='demo-frame']")));
+		
+		Actions action= new Actions(driver);
+		Thread.sleep(2000);
+		action.clickAndHold(driver.findElement(By.id("draggable"))).moveToElement(driver.findElement(By.id("droppable"))).release().build().perform();;
+       
+	}
+
+
+}
+***********************************************************************
+package com.automation.naveenSelenium;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Navigations {
+
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http:www.google.com");
+		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+		
+		driver.navigate().to("http://jqueryui.com/droppable/");
+		Thread.sleep(5000);
+		driver.navigate().back();
+		Thread.sleep(5000);
+		driver.navigate().forward();
+
+		
+	}
+	
+	//explicit Wait
+	 public void clickON(WebDriver driver, int timeout, WebElement locator) {
+		 
+		 new WebDriverWait(driver, timeout).ignoring(StaleElementReferenceException.class).
+		    until(ExpectedConditions.elementToBeClickable(locator)).click();
+	 }
+}
+**********************************************************************
+package com.automation.naveenSelenium;
+
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class WindowPopup {
+
+	
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://www.popuptest.com/goodpopups.html");
+        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.findElement(By.xpath("//a[text()='Good PopUp #1']")).click();
+      
+     
+        Thread.sleep(2000);
+        Set<String> handler = driver.getWindowHandles();
+        Iterator<String> itr = handler.iterator();
+        String parentWindowID=itr.next();
+        System.out.println("Parent window id: "+parentWindowID);
+        String childWindowID1=itr.next();
+        System.out.println("child1 window id: "+childWindowID1);
+        Thread.sleep(2000);
+        driver.switchTo().window(childWindowID1);
+        driver.close();
+        
+        
+        driver.switchTo().window(parentWindowID);
+        driver.findElement(By.xpath("//a[text()='Good PopUp #2']")).click();
+        Set<String> handler2 = driver.getWindowHandles();
+        Iterator<String> itr2 = handler2.iterator();
+        String parentWindowID2=itr2.next();
+        String childWindowID2=itr2.next();
+        System.out.println("child2 window id: "+childWindowID2);
+        Thread.sleep(2000);
+        driver.switchTo().window(childWindowID2);
+        driver.close();
+        
+        
+        driver.switchTo().window(parentWindowID2);
+        driver.findElement(By.xpath("//a[text()='Good PopUp #3']")).click();
+        Set<String> handler3 = driver.getWindowHandles();
+        Iterator<String> itr3 = handler3.iterator();
+        String parentWindowID3=itr3.next();
+        String childWindowID3=itr3.next();
+        System.out.println("child3 window id: "+childWindowID3);
+        Thread.sleep(2000);
+        driver.switchTo().window(childWindowID3);
+        driver.close();
+        
+        driver.switchTo().window(parentWindowID3);
+        driver.findElement(By.xpath("//a[text()='Good PopUp #4']")).click();
+        Set<String> handler4 = driver.getWindowHandles();
+        Iterator<String> itr4 = handler4.iterator();
+        String parentWindowID4=itr4.next();
+        String childWindowID4=itr4.next();
+        System.out.println("child4 window id: "+childWindowID4);
+        Thread.sleep(2000);
+        driver.switchTo().window(childWindowID4);
+        driver.close();
+        driver.switchTo().window(parentWindowID4);
+	}
+
+}
+**************************************************************************************
+package com.automation.naveenSelenium;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.apache.commons.collections.bag.SynchronizedSortedBag;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class ObjectRepository {
+	public WebDriver driver;
+	
+	
+     @Test
+     public void login() throws IOException {
+		
+    	 ObjectRepository pro=new ObjectRepository();
+		
+		String userName=pro.getProperty("username");
+		String passWord=pro.getProperty("password");
+		String uRL=pro.getProperty("url"); 
+		String browser=pro.getProperty("browser");
+		
+		
+		if(browser.equals("chrome")) {
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		driver= new ChromeDriver();
+		}
+		else if(browser.equals("firefox")){
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/Drivers/geckodriver.exe");
+			driver= new FirefoxDriver();
+		}
+		
+		driver.get(uRL);
+		driver.manage().window().maximize();
+		takeScreenshotsForPass("FreeCRM");
+		driver.findElement(By.name("username")).sendKeys(userName);
+		driver.findElement(By.name("password")).sendKeys(passWord);
+		driver.findElement(By.xpath("//input[@value='Login']")).click();
+	 }
+
+	
+	public String getProperty(String strKey) throws IOException {
+		Properties prop = new Properties();
+		FileInputStream fis = new FileInputStream("\\Users\\pmanala\\workspace_New\\automation-praneeth\\src\\test\\java\\com\\automation\\naveenSelenium\\config.properties");
+		prop.load(fis);
+		String strValue = prop.getProperty(strKey);
+		return strValue;
+	}
+	
+	 public String takeScreenshotsForPass(String name) throws IOException {
+		
+		        File scrfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		         String destfile = System.getProperty("user.dir")+"/ScreenShots/"+name+".png";
+		        FileUtils.copyFile(scrfile,new File(destfile));
+		        return destfile;
+				
+	}
+}
+
+***********************************************************************************************
+package com.automation.naveenSelenium;
+
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class BrokenLinkTest {
+
+	public static WebDriver driver;
+	
+	public static void main(String[] args) throws IOException {
+		// TODO Auto-generated method stub
+		  ObjectRepository pro=new ObjectRepository();
+			
+			String userName=pro.getProperty("username");
+			String passWord=pro.getProperty("password");
+			String uRL=pro.getProperty("url"); 
+			String browser=pro.getProperty("browser");
+			
+			if(browser.equals("chrome")) {
+			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+			driver= new ChromeDriver();
+			}
+			else if(browser.equals("firefox")){
+				System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/Drivers/geckodriver.exe");
+				driver= new FirefoxDriver();
+			}
+			
+			driver.get(uRL);
+			driver.manage().window().maximize();
+			/*driver.findElement(By.name("username")).sendKeys(userName);
+			driver.findElement(By.name("password")).sendKeys(passWord);
+			driver.findElement(By.xpath("//input[@value='Login']")).click();
+			
+			driver.switchTo().frame("mainpanel");*/
+			
+			//1.get the list of all the links and images
+			List<WebElement> linklist = driver.findElements(By.tagName("a"));
+			linklist.addAll(driver.findElements(By.tagName("img")));
+			System.out.println("Size of All links and images are :"+linklist.size());
+			
+			List<WebElement> activelinks=new ArrayList<WebElement>();
+			
+			//2.Iterate linklist .. Exclude all the links and images which don't have href 
+			
+			for(int i=0;i<linklist.size();i++) {
+				
+				System.out.println(linklist.get(i).getAttribute("href"));
+				if(linklist.get(i).getAttribute("href")!= null && (!linklist.get(i).getAttribute("href").contains("javascript")) && (!linklist.get(i).getAttribute("href").contains("mailto"))) {
+					
+					activelinks.add(linklist.get(i));
+				}
+					
+			}
+			
+			//get the size of active links
+			System.out.println("Size of Active links and images are :"+activelinks.size());
+			
+			//3.check the href url with httpconnection api:
+			
+			for(int j=0; j<activelinks.size();j++) {
+			
+			HttpURLConnection connection = (HttpURLConnection)new URL(activelinks.get(j).getAttribute("href")).openConnection();
+			connection.connect();
+			String response = connection.getResponseMessage();
+			connection.disconnect();
+			System.out.println(activelinks.get(j).getAttribute("href") +"--->"+response);
+			
+			}
+			
+	}
+
+}
+*************************************************************************************************
+Log4j.properties
+**********
+// Here we have defined root logger
+log4j.rootLogger=INFO,CONSOLE,R,HTML,TTCC
+ 
+// Here we define the appender
+log4j.appender.CONSOLE=org.apache.log4j.ConsoleAppender
+log4j.appender.R=org.apache.log4j.RollingFileAppender
+log4j.appender.TTCC=org.apache.log4j.RollingFileAppender
+log4j.appender.HTML=org.apache.log4j.FileAppender
+ 
+// Here we define log file location
+log4j.appender.R.File=./log/testlog.log
+log4j.appender.TTCC.File=./log/testlog1.log
+log4j.appender.HTML.File=./log/application.html
+ 
+// Here we define the layout and pattern
+log4j.appender.CONSOLE.layout=org.apache.log4j.PatternLayout
+log4j.appender.CONSOLE.layout.ConversionPattern= %5p [%t] (%F:%L)- %m%n
+
+log4j.appender.R.layout=org.apache.log4j.PatternLayout
+log4j.appender.R.layout.ConversionPattern=%d - %c -%p - %m%n
+
+log4j.appender.TTCC.layout=org.apache.log4j.TTCCLayout
+log4j.appender.TTCC.layout.DateFormat=ISO8601
+
+log4j.appender.HTML.layout=org.apache.log4j.HTMLLayout
+log4j.appender.HTML.layout.Title=Application log
+log4j.appender.HTML.layout.LocationInfo=true
+*****************************************************
+package com.automation.naveenSelenium;
+
+import java.io.IOException;
+import java.util.logging.Logger;
+
+import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class Log4jImplementation {
+
+	public static WebDriver driver;
+	
+	public static void main(String[] args) throws IOException, InterruptedException {
+		
+		//Log4j configuration
+		Logger logger=Logger.getLogger("Log4jImplementation");
+		PropertyConfigurator.configure("log4j.properties");
+		
+		
+		ObjectRepository pro=new ObjectRepository();
+		
+		String userName=pro.getProperty("username");
+		String passWord=pro.getProperty("password");
+		String uRL=pro.getProperty("url"); 
+		String browser=pro.getProperty("browser");
+		
+		if(browser.equals("chrome")) {
+			logger.info("Chrome Browser is initialized");
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		driver= new ChromeDriver();
+		}
+		else if(browser.equals("firefox")){
+			logger.info("Firefox Browser is initialized");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir")+"/Drivers/geckodriver.exe");
+			driver= new FirefoxDriver();
+		}
+		
+		driver.get(uRL);
+		logger.info("URL is entered :"+uRL);
+		driver.manage().window().maximize();
+		logger.info("Browser is maximized");
+		driver.findElement(By.name("username")).sendKeys(userName);
+		logger.info("Username is entered:"+userName);
+		driver.findElement(By.name("password")).sendKeys(passWord);
+		logger.info("Password is entered:"+passWord);
+		driver.findElement(By.xpath("//input[@value='Login']")).click();
+		System.out.println("The title of the home page is :"+driver.getTitle());
+		logger.info("Title is captured");
+		Thread.sleep(2000);
+		driver.close();
+		logger.info("Browser is closed");
+		
+	}
+}
+****************************************************************************************************
+Fluent Wait
+*****
+package com.automation.mukeshSelenium;
+
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+public class FluentWaitDemo {
+
+	public static WebDriver driver;
+
+	public static void main(String[] args) {
+
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		// driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		driver.get("http://seleniumpractise.blogspot.in/2016/08/how-to-use-explicit-wait-in-selenium.html");
+
+		driver.findElement(By.xpath("//button[text()='Click me to start timer']")).click();
+		
+		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver).withTimeout(30, TimeUnit.SECONDS)
+				.pollingEvery(1, TimeUnit.SECONDS).ignoring(NoSuchElementException.class);
+
+		WebElement element = wait.until(new Function<WebDriver, WebElement>() {
+
+			public WebElement apply(WebDriver driver) {
+
+				WebElement ele = driver.findElement(By.xpath("//p[@id='demo']"));
+
+				if (ele.getAttribute("innerHTML").equalsIgnoreCase("WebDriver")) {
+
+					System.out.println("Value is >>> " + ele.getAttribute("innerHTML"));
+
+					return ele;
+
+				}
+
+				else {
+					System.out.println("Value is >>> " + ele.getAttribute("innerHTML"));
+
+					return null;
+
+				}
+
+			}
+
+		});
+
+		System.out.println("Element is displayed ? :" + element.isDisplayed());
+	}
+}
+******************************************************************************************************
+Selection of date
+*****************
+package com.automation.bhanuprathap.java;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+public class CalenderDemo {
+	
+	WebDriver driver;
+     String checkinmonth= "December 2018";
+     String checkoutmonth="December 2018";
+     int checkindate=11;
+     int checkoutdate=15;
+	
+	@Test
+	public void travelcalender() throws InterruptedException   {
+	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+	driver= new ChromeDriver();
+	driver.manage().window().maximize();
+	
+	driver.get("http://www.phptravels.net/");
+	Thread.sleep(3000);
+	
+	
+	
+	driver.findElement(By.xpath("//span[text()='Search by Hotel or City Name']")).click();
+	Thread.sleep(1000);
+	driver.findElement(By.xpath("//div[@class='select2-drop select2-display-none select2-with-searchbox select2-drop-active'][1]//input[1]")).sendKeys("hyd");
+	
+	Thread.sleep(1000);
+	//List<WebElement> cities = driver.findElements(By.xpath("//ul[@class='select2-results'][1]//li//ul//li/div"));
+	
+	List<WebElement> cities = driver.findElements(By.xpath("//ul[@class='select2-result-sub']//li"));
+	
+	
+	for(int i=0;i<cities.size();i++) {
+		System.out.println(cities.get(i).getText());
+		
+		}
+	for(int i=0;i<cities.size();i++) {
+		
+		if(cities.get(i).getText().contains("India")) {
+			
+			cities.get(i).click();
+			break;
+		}
+		
+		}
+	
+	driver.findElement(By.xpath("//input[@name='checkin']")).click();
+	
+	//Check in date code
+	WebElement checkinmon=driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][1]/div[1]/table/thead/tr[1]/th[2]"));
+    while(true) {
+    	if(checkinmon.getText().equalsIgnoreCase(checkinmonth)) {
+    		break;
+    		
+    	}
+    	else {
+    		
+    		driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][1]/div[1]/table/thead/tr[1]/th[3]")).click();
+    		Thread.sleep(1000);
+    	}
+    }
+	
+    driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][1]/div[1]/table/tbody/tr/td[contains(text(),'"+checkindate+"')]")).click();
+    
+    //Checkout date Code
+    WebElement checkoutmon=driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][2]/div[1]/table/thead/tr[1]/th[2]"));
+    while(true) {
+    	if(checkoutmon.getText().equalsIgnoreCase(checkoutmonth)) {
+    		break;
+    		
+    	}
+    	else {
+    		
+    		driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][2]/div[1]/table/thead/tr[1]/th[3]")).click();
+    		Thread.sleep(1000);
+    	}
+    
+	}
+    driver.findElement(By.xpath("//div[@class='datepicker dropdown-menu'][2]/div[1]/table/tbody/tr/td[contains(text(),'"+checkoutdate+"')]")).click();
+	
+	
+	
+	}
+}
+*******************************************************************************
+GetCookies
+**********
+package com.automation.bhanuprathap.java;
+
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class GetCookies {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("http://www.google.com");
+		Thread.sleep(3000);
+		
+		//Delete Cookies
+		/*driver.manage().deleteAllCookies();
+		//driver.manage().deleteCookieNamed("domain");
+		Set<Cookie> cookieslist = driver.manage().getCookies();
+		for(Cookie getcookies:cookieslist) {
+			
+			System.out.println(getcookies);
+		}*/
+		
+		Cookie cookies = new Cookie("customerCookie","123456");
+		
+		driver.manage().addCookie(cookies);
+		
+		Set<Cookie> allcookies = driver.manage().getCookies();
+		for(Cookie cookieslist:allcookies) {
+			System.out.println(cookieslist);
+		}
+		
+		
+	}
+
+}
+****************************************************************************
+KeyEvents by Action class
+*************************
+package com.automation.bhanuprathap.java;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class KeyboardEvents {
+
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("http://www.google.com");
+		Thread.sleep(3000);
+		
+		WebElement ele=driver.findElement(By.name("q"));
+		
+		Actions action= new Actions(driver);
+		
+		action.keyDown(ele,Keys.SHIFT).sendKeys("Praneeth Kumar").keyUp(ele,Keys.SHIFT).build().perform();
+		
+	}
+}
+
+************
+package com.automation.bhanuprathap.java;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+public class KeyboardEvents2 {
+
+	
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.get("https://www.seleniumhq.org/");
+		Thread.sleep(3000);
+		
+	    Actions action= new Actions(driver);
+		
+		WebElement link = driver.findElement(By.xpath("//li[@id='menu_projects']/a"));
+		
+		action.keyDown(Keys.COMMAND).keyDown(Keys.SHIFT).click(link).keyUp(Keys.COMMAND).keyUp(Keys.SHIFT).build().perform();
+		Thread.sleep(1000);
+		action.keyDown(Keys.CONTROL).keyDown(Keys.SHIFT).click(link).keyUp(Keys.CONTROL).keyUp(Keys.SHIFT).build().perform();
+		
+		Set<String> windows = driver.getWindowHandles();
+	    
+		 Iterator<String> itr = windows.iterator();
+		 String parentid=itr.next();
+		 System.out.println("The parent window id:"+parentid);
+		 String childid=itr.next();
+		 System.out.println("The child window id :"+childid);
+		
+		 driver.switchTo().window(childid);
+		 
+		 driver.findElement(By.xpath("//li[@id='menu_download']/a")).click();
+		 
+		 Thread.sleep(2000);
+		 
+		 driver.switchTo().window(parentid);
+		 
+		 driver.findElement(By.xpath("//li[@id='menu_documentation']/a")).click();
+	}
+}
+*************************************************************************************************************************
+JavaScriptExicutor
+***************
+package com.automation.bhanuprathap.java;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class JavaScriptinSelenium {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+		
+		/*driver.get("https://www.freecrm.com/");
+		Thread.sleep(3000);
+		
+			WebElement ele=driver.findElement(By.xpath("//input[@value='Login']"));
+		
+		
+		JavascriptExecutor js=((JavascriptExecutor)driver);
+		js.executeScript("document.getElementByName('username').setAttribute('value','praneethmanala')");
+		js.executeScript("document.getElementByName('password').setAttribute('value','praneethmanala')");
+		js.executeScript("argument[0].click;", ele);
+	 */
+		
+		
+		driver.get("http://demo.automationtesting.in/");
+		JavascriptExecutor js=((JavascriptExecutor)driver);
+		String titlestr=js.executeScript("return document.title").toString(); //Get the title
+		System.out.println(titlestr);
+		js.executeScript("document.getElementById('email').value='krishna@gmail.com'"); //enter data
+		js.executeScript("document.getElementById('enterimg').click()"); //click operation
+		//js.executeScript("scroll(0,400)"); //Scroll
+		//js.executeScript("scroll(0,document.body.scrollHeight)"); //Scroll till end of the page
+		js.executeScript("arguments[0].scrollIntoView(true);",driver.findElement(By.xpath(""))); // Scroll to particular element 
+		js.executeScript("window.history.back()"); //navigate back
+		js.executeScript("window.history.forward()");
+	}
+
+}
+*****************************************************************************************************************************
+CSS Locator
+***********
+package com.automation.krishnasakinala;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class CSSLocatorsDemo {
+
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+	//	driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		
+		driver.get("http://demo.automationtesting.in/");
+
+		
+		/*  CSS Selector
+		 * *************
+		  * 1. .form-control --> By ClassName
+		  * 
+		  * 2.  #header      ---> By Id
+		  *  
+		  * 3. input[name='username'] 
+		       input[ng-model='FirstName'] --> By Attribute
+		       input[name='username'][ng-model='FirstName'] ---> multiple attributes
+		  *    
+		  * 4. contains --> use *
+		  *    input[placeholder*='First Name']
+		  *    [ng-model*='LastName']
+		  * 
+		  * 5. Starts-With---> ^
+		  *    input[placeholder^='First'] ---> Xpath= //input[starts-with(@placeholder,'First')]
+		  *    [ng-model^='Last']
+		  *    div[class^='form']
+		  *  
+		  * 6.Ends-With   ---> $   
+		  *    input[placeholder$='Name']  or [placeholder$='Name'] ---> Xpath=//input[ends-with(@placeholder,'Name')] 
+		  *     div[class$='group'] 
+		  *  
+		  */
+		driver.findElement(By.cssSelector("emailid")).sendKeys("praneethmanala");
+	}
+
+}
+************************************************************************************************************
+BarCode Reador
+**************
+BarCode maven dependancey
+*********************
+<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.3.3</version>
+		</dependency>
+*************************
+package com.automation.krishnasakinala;
+
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import javax.imageio.ImageIO;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+
+import com.google.zxing.BinaryBitmap;
+import com.google.zxing.MultiFormatReader;
+import com.google.zxing.NotFoundException;
+import com.google.zxing.Result;
+import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
+import com.google.zxing.common.HybridBinarizer;
+
+public class BarCodeDemo {
+
+	@Test
+	public void barcode() throws IOException, NotFoundException {
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().window().maximize();
+	//	driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
+		
+		driver.get("file:///C:/Users/pmanala/Desktop/Barcode1.html");
+		
+		String barCodeFileurl = driver.findElement(By.tagName("img")).getAttribute("src");
+		
+		System.out.println("The Bar Code File URL is :"+barCodeFileurl);
+		URL urlOfImage = new URL(barCodeFileurl);
+		BufferedImage bufferedImage= ImageIO.read(urlOfImage);
+		
+		BufferedImageLuminanceSource luminanceSource = new BufferedImageLuminanceSource(bufferedImage);
+		
+		BinaryBitmap binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
+
+		Result result = new MultiFormatReader().decode(binaryBitmap);
+		
+		String textinBarcode = result.getText();
+		
+		System.out.println("Text in Bar code is :"+textinBarcode);
+	}
+	
+	
+}
+*******************************************************************************************
+Avoid Window Handles by using javascriptExecutor
+*************************************************
+package com.automation.krishnasakinala;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class AvoidWindowHandles {
+	
+	public static void main(String[] args) throws InterruptedException {
+		
+		
+		System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+"/Drivers/chromedriver.exe");
+		WebDriver driver= new ChromeDriver();
+		driver.manage().deleteAllCookies();
+		driver.manage().window().maximize();
+		driver.get("http://www.popuptest.com/goodpopups.html");
+        driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        
+        
+        String parenttitle=driver.getTitle();
+        
+        System.out.println("The Parent Title is :"+parenttitle);
+        
+        WebElement we = driver.findElement(By.xpath("//a[@class='blu']"));
+        
+        JavascriptExecutor js= (JavascriptExecutor)driver;
+        js.executeScript("arguments[0].setAttribute('target','_self');", we);
+        
+        we.click();
+        
+        Thread.sleep(2000);
+        
+         String childtitle=driver.getTitle();
+         System.out.println("The Child Title is :"+childtitle);
+         
+         driver.navigate().back();
+         
+         String parenttitle1=driver.getTitle();
+         
+         System.out.println("The Parent Title is :"+parenttitle1);
+         
+         if(parenttitle.equalsIgnoreCase(parenttitle1)) {
+        	 
+        	 System.out.println("Pass");
+        	 
+         }
+         
+        
+	}
+	
+	
+}
+*******************************************************************************************
+
+
+ 

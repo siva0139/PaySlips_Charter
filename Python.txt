@@ -1,0 +1,797 @@
+Python
+******
+//1.Programmingknowledge
+//2.Raghav Pai
+//3.Naveen
+4.Mukesh Owtwani
+
+
+
+******************************************************
+
+1.dir(__builtins__)
+2.print("Hellow- world")
+3.help(max
+4.max(4,2,5,6)--> gives 6
+5.len("praneeth")-->8
+6.import math
+7.math.pow(2,3)-->2**3-->2*2*2=8
+8.math.sqrt(81)--->9
+9.squareRoot=math.sqrt(9)
+  >>ssquareRoot ---> 3.0
+
+*****************************************************
+1.x=int(input("Enter the 1st value"))
+  y=int(input("Enter the 2nd value"))
+  z=int(input("Enter the 3rd value"))
+  print("The max value is :")
+  print(max(x,y,z))
+  print("please click on Enter button to exit:")
+
+*****************************************************
+1.
+Q:
+ a='I am a single quoted string'
+   b="I am a double quoted string"
+   c="""I am a triple quoted string"""
+
+   print(a)
+   print(b)
+   print(c)
+A:
+I am a single quoted string
+I am a double quoted string
+I am a triple quoted string
+
+
+2. 
+Q:
+a='I am a single quoted string don\'t' 
+   b="I am a double \"quoted string"
+   c="""I am a triple \"quoted string"""
+
+   print(a)
+   print(b)
+   print(c)
+A:
+I am a single quoted string don't
+I am a double "quoted string
+I am a triple "quoted string
+
+3.
+Q:
+a='I am a \\single quoted string don\'t'
+b="I am a \\double \"quoted string"
+c="""I am a \\triple \"quoted string"""
+print(a)
+print(b)
+print(c)
+A:
+I am a \single quoted string don't
+I am a \double "quoted string
+I am a 	riple "quoted string
+
+4.
+Q:
+a='I am a \\single quoted string don\'t'
+b="I am a \\double \"quoted string"
+c="""I am a \\triple \"quoted string"""
+print(len(a))
+print(b)
+print(c)
+A:
+34
+I am a \double "quoted string
+I am a \triple "quoted string
+
+5.
+Q:
+a='Hello'
+b="world"
+c="""I am a \\triple \"quoted string"""
+print(a+b)
+print(b)
+print(c)
+A:
+Helloworld
+world
+I am a \triple "quoted string
+
+6.
+Q:
+a='Hello '
+b="world"
+c="""I am a \\triple \"quoted string"""
+print(a * 10)
+A:
+Hello Hello Hello Hello Hello Hello Hello Hello Hello Hello
+
+7.
+Q:
+a='Hello '
+b=5
+c="""I am a \\triple \"quoted string"""
+print(a + str(b))
+A:
+Hello 5
+
+******************************************************************
+Lists
+*****
+1.names=["mark","John","praneeth"]
+ >>names -->['mark', 'John', 'praneeth']
+
+2.names[0] -->'mark'
+
+3.names[2] -->'praneeth'
+
+4.names[-1] -->'praneeth'
+
+5.names[-3] -->'mark'
+
+6.names.append("Selenium")
+
+ >>names --->['mark', 'John', 'praneeth', 'Selenium']
+
+7.age=[23,12,28,11]
+  >>names.extend(age)
+  >>names --->['mark', 'John', 'praneeth', 'Selenium', 23, 12, 28, 11]
+
+8.names.remove("John")
+  >> names -->['mark', 'praneeth', 'Selenium', 23, 12, 28, 11]
+
+9.print(names,age)
+  -->['mark', 'praneeth', 'Selenium', 23, 12, 28, 11] [23, 12, 28, 11]
+
+10.len(names) -->7
+
+11.max(age) -->28
+
+***********************************************************************
+
+Slicing
+********
+1.mylist=[0,1,2,3,4,5,6,7,8,9]
+  >>mylist -->[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+2.mylist[4:7]
+  --->[4,5,6]
+
+3.mylist[5:]
+  -->[5, 6, 7, 8, 9]
+
+3.mylist[5:10]
+  ---> [5, 6, 7, 8, 9]
+
+4.names=['a','b','c','d']
+  names[2:3]--->['c']
+
+5.mylist[:9]
+  -->[0, 1, 2, 3, 4, 5, 6, 7, 8]
+
+6.mylist[-4:-2]
+  -->[6,7]
+  
+7.mylist[:]
+  -->[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+8.mylist[0:10:2] 
+  -->[0, 2, 4, 6, 8]
+
+9.mylist[0:10:3]
+ -->[0, 3, 6, 9]
+
+10.mylist[::3]
+  --->[0, 3, 6, 9]
+
+11.mylist[::-2]
+   -->[9, 7, 5, 3, 1]
+
+*****************************************************************
+Consitional Statements
+**********************
+1.If else
+
+1.n=int(input("Number? "))
+  if n<0:
+    print("The Absolute value of",n," is",-n)
+  else:
+    print("The Absolute value of",n," is",n)
+  
+2.n=int(input("Number? "))
+if n<0:
+    print("The Absolute value of",n," is",-n)
+else:
+    print("The Absolute value of",n," is",n)
+
+sumoftwo=50+60
+print(sumoftwo)
+
+3. name=input("Name? ")
+if name=="praneeth":
+    print("The name entered is ",name)
+elif name=="kumar":
+    print("The name entered is ",name)
+elif name=="manala":
+    print("The name entered is ",name)
+elif name=="tom":
+    print("The name entered is ",name)    
+else:
+    print("The name entered is not valid ")
+
+4. string="abcd"
+>>> 'a' in string --->True
+
+5.'pr' in string
+False
+
+6. a={1,2,3}
+>>> b={1,2,3}
+>>> a is b
+-->False
+
+7.c=d={1,2,3}
+>>> c is d
+True
+
+*********************************************************************
+Loops
+******
+1.While Loop
+>>> a=0
+>>> while a<5:
+	 print(a)
+	 a+=1
+
+	 
+0
+1
+2
+3
+4
+
+2. For Loop
+
+b=[3,5,6,5,6,4,55,4]
+>>> for num in b:
+	print(num)
+
+	
+3
+5
+6
+5
+6
+4
+55
+4
+
+**************************************************************************************
+Funcitons
+**********
+1.
+def startup(x):
+    print("Hello",x)
+
+>>>startup("praneeth")
+Hello praneeth
+
+2.
+def add(x,y):
+	return (x+y)
+
+>>> sum2=add(100,200)
+>>> sum2
+300
+
+3.
+def student(name,score):
+	print(name," scored" ,score,"marks")
+
+	
+>>> student("praneeth",70)
+praneeth  scored 70 marks
+>>> 
+
+4.
+def student1(name,*score):
+	print(name)
+	print(score)
+
+	
+>>> student1("mark",10,45,75,47,85)
+mark
+(10, 45, 75, 47, 85)
+
+5.
+Q:print("HelloWorld")
+
+x=5
+y=40.5
+z=55j
+
+print(type(x))
+print(type(y))
+print(type(z))
+
+#Casting
+
+x=int(2)         #2
+y=int(2.5)       #2
+
+z=float(1)       #1.0
+p=str(10)        #"10"
+
+print(x)
+print(y)
+print(z)
+print(p)
+
+
+x="Hello-world"
+print(x)
+print(x[1])
+print(x[6:12])
+print(len(x))
+print(x.lower())
+print(x.upper())
+
+x="       Praneeth,kumar   "
+print(x)
+print(x.strip())
+print(x.replace('e','a'))
+print(x.split(","))
+
+
+A:
+
+HelloWorld
+<class 'int'>
+<class 'float'>
+<class 'complex'>
+2
+2
+1.0
+10
+Hello-world
+e
+world
+11
+hello-world
+HELLO-WORLD
+       Praneeth,kumar   
+Praneeth,kumar
+       Pranaath,kumar   
+['       Praneeth', 'kumar   ']
+
+
+*******************************************************
+
+5.
+num=0
+if num>0:
+    print("Positive number")
+elif num==0:
+    print("zero")
+else:
+    print("Negative Number")
+
+****************
+
+6.
+num=[1,2,5,8,7,9]
+
+for val in num:
+    print(val)
+
+************************
+7.
+
+num=[1,2,5,8,7,9]
+sum=0
+for val in num:
+    sum=sum+val
+print("Total is :"+sum)
+
+****************************
+8.
+fruits=["apple","orange","grapes"]
+for val1 in fruits:
+    print(val1)
+else:
+    print("No fruits left")
+
+A:
+apple
+orange
+grapes
+No fruits left
+
+******************************
+9.
+num=10
+sum=0
+i=1
+while i<num:
+    sum=sum+i
+    i=i+1
+print("Total is :",sum)
+
+A: Total is : 45
+
+*****************************
+10
+print("Enter a Numbar")
+num=int(input())
+sum=0
+i=1
+while i<num:
+    sum=sum+i
+    i=i+1
+print("Total is :",sum)
+
+A:
+Enter a Numbar
+10
+Total is : 45
+
+***************************************************************************
+Functions
+**********
+1.def startup():
+    print("Hello")
+
+
+startup()
+
+2.def hello(name="john"):
+    print("Hi",name)
+
+hello("praneeth")
+hello()
+
+3.def sum(a,b,c):
+    print(a+b+c)
+sum(10,20,30)
+
+4.def returnSum(a,b):
+    return(a+b)
+
+totalSum=returnSum(10,20)
+print(totalSum)
+
+
+5.
+class MyClass:
+  name='praneeth'
+
+    def __int__(self,name,age):
+        self.name=name
+        self.age=age
+
+    def sum(self,a,b):
+        print(a+b)
+
+x=MyClass("kumar",40)
+print(x.name)
+x.sum(4,5)
+
+******************************************
+collections
+************
+1.Lists
+*****
+Q:
+my_list=["Tokya","Hyd","Delhi"]
+print(my_list)
+print(my_list[1])
+
+my_list[2]="US"
+print(my_list)
+
+for val in my_list:
+    print(val)
+
+print(len(my_list))
+
+my_list.append("Khammam")
+print(my_list)
+
+my_list.insert(0,"war")
+print(my_list)
+
+my_list.remove("war")
+print(my_list)
+my_list.pop(0)
+print(my_list)
+
+del my_list[1]
+print(my_list)
+
+my_list.clear()
+print(my_list)
+
+fruits=["apples","oranges","cherry","java"]
+print(fruits)
+fruits.reverse()
+print(fruits)
+
+my_list_2=["apples",1,2,3.0]
+my_list_3=["apples",[1,2,3],['a','b','c']]
+print(my_list_3)
+print(my_list_3[1][1])
+
+A:
+['Tokya', 'Hyd', 'Delhi']
+Hyd
+['Tokya', 'Hyd', 'US']
+Tokya
+Hyd
+US
+3
+['Tokya', 'Hyd', 'US', 'Khammam']
+['war', 'Tokya', 'Hyd', 'US', 'Khammam']
+['Tokya', 'Hyd', 'US', 'Khammam']
+['Hyd', 'US', 'Khammam']
+['Hyd', 'Khammam']
+[]
+['apples', 'oranges', 'cherry', 'java']
+['java', 'cherry', 'oranges', 'apples']
+['apples', [1, 2, 3], ['a', 'b', 'c']]
+2
+
+********************************************************
+2.Tuple
+******
+Q:
+my_tuple=("Apples","Oranges","Grapes")
+
+print(my_tuple)
+print(my_tuple[1])
+print(my_tuple[-1])
+
+print(my_tuple[0:2])
+
+for value in my_tuple:
+    print(value)
+
+print(len(my_tuple))
+
+my_tuple2=("Banana",(1,2,3),["Hyd","Delhi"])
+print(my_tuple2)
+print(my_tuple2[1][0])
+
+my_tuple2[2][1]="Khammam"
+print(my_tuple2)
+
+print("Banana" in my_tuple2)
+print("Cherry" in my_tuple2)
+
+#Not applicable for Tuple
+#my_tuple[3]="Cherry"
+
+
+A:
+('Apples', 'Oranges', 'Grapes')
+Oranges
+Grapes
+('Apples', 'Oranges')
+Apples
+Oranges
+Grapes
+3
+('Banana', (1, 2, 3), ['Hyd', 'Delhi'])
+1
+('Banana', (1, 2, 3), ['Hyd', 'Khammam'])
+True
+False
+
+***************************************************************
+3.Sets
+******
+Q:
+my_set={"Praneeth","Kumar","Manala"}
+print(my_set)
+
+for x in my_set:
+    print(x)
+
+print("Praneeth" in my_set)
+
+my_set.add("M")
+print(my_set)
+
+my_set.update(["pen","pencil","shrpner"])
+print(my_set)
+
+print(len(my_set))
+
+my_set.remove("pen")
+print(my_set)
+
+my_set.discard("pencil")
+print(my_set)
+
+my_set.pop()
+print(my_set)
+my_set.clear()
+print(my_set)
+
+my_set2={"Apples",1,2,(3,4,5)}
+print(my_set2)
+
+my_list=[1,2,3]
+print(my_list)
+
+my_set3=set(my_list)
+print(my_set3)
+
+#UNION | INTERSECTION | DIFF | SYMMETRIC DEFF
+A={'A','B',1,2,3}
+B={'B','C',3,4,5}
+print(A.union(B))
+print(A|B)
+
+print(A.intersection(B))
+print(A & B)
+
+print(A.difference(B))
+print(A-B)
+
+print(A.symmetric_difference(B))
+print(A^B)
+*******************
+A:
+{'Kumar', 'Praneeth', 'Manala'}
+Kumar
+Praneeth
+Manala
+True
+{'Kumar', 'M', 'Praneeth', 'Manala'}
+{'pencil', 'Kumar', 'M', 'Praneeth', 'Manala', 'pen', 'shrpner'}
+7
+{'pencil', 'Kumar', 'M', 'Praneeth', 'Manala', 'shrpner'}
+{'Kumar', 'M', 'Praneeth', 'Manala', 'shrpner'}
+{'M', 'Praneeth', 'Manala', 'shrpner'}
+set()
+{'Apples', 2, (3, 4, 5), 1}
+[1, 2, 3]
+{1, 2, 3}
+{'B', 2, 3, 1, 4, 5, 'A', 'C'}
+{'B', 2, 3, 1, 4, 5, 'A', 'C'}
+{'B', 3}
+{'B', 3}
+{'A', 1, 2}
+{'A', 1, 2}
+{2, 1, 4, 5, 'A', 'C'}
+{2, 1, 4, 5, 'A', 'C'}
+
+*****************************************************************************
+4.
+my_dict={"class":"Men",
+         "name":"praneeth",
+         "age":"40"}
+print(my_dict)
+
+print(my_dict["name"])
+
+print(my_dict.get("class"))
+
+print(my_dict.values())
+
+for x in my_dict:
+    print(x)
+
+for x,y in my_dict.items():
+    print(x,y)
+
+my_dict["name"]="Kumar"
+print(my_dict)
+
+my_dict["Rank"]="1"
+print(my_dict)
+
+my_dict.pop("Rank")
+print(my_dict)
+
+my_dict.popitem()
+print(my_dict)
+
+del my_dict["class"]
+print(my_dict)
+
+my_dict.clear()
+print(my_dict)
+
+A:
+{'class': 'Men', 'name': 'praneeth', 'age': '40'}
+praneeth
+Men
+dict_values(['Men', 'praneeth', '40'])
+class
+name
+age
+class Men
+name praneeth
+age 40
+{'class': 'Men', 'name': 'Kumar', 'age': '40'}
+{'class': 'Men', 'name': 'Kumar', 'age': '40', 'Rank': '1'}
+{'class': 'Men', 'name': 'Kumar', 'age': '40'}
+{'class': 'Men', 'name': 'Kumar'}
+{'name': 'Kumar'}
+{}
+
+***************************************************************
+Python with Selenium -- By Naveen
+**********************************
+C:\Users\pmanala\AppData\Local\Programs\Python\Python37-32\Scripts
+
+1.Open Pycharm
+2.Create project
+3.copy the project path
+4.open cmd and change to that path
+5.cmd>>pip install selenium
+
+****************
+Programme1:
+
+from selenium import webdriver
+
+# For FireFox
+# caps = DesiredCapabilities.FIREFOX
+# caps["marionette"]=True
+# caps["binary"]="/"
+# driver=webdriver.Firefox("/Users/pmanala/PycharmProjects/PythonSelenium/Drivers/geckodriver.exe")
+
+
+
+driver=webdriver.Chrome("/Users/pmanala/PycharmProjects/PythonSelenium/Drivers/chromedriver.exe")
+driver.get("https://github.com/login")
+driver.maximize_window()
+title1=driver.title
+print(title1)
+assert "Sign in to GitHub · GitHub" in title1
+driver.find_element_by_xpath("//input[@name='login']").send_keys("praneethmanala@gmail.com")
+driver.find_element_by_xpath("//input[@name='password']").send_keys("Praneeth@11")
+driver.find_element_by_xpath("//input[@name='commit']").click()
+
+driver.quit()
+**********************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

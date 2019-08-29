@@ -1,0 +1,231 @@
+Appium : Interface between Code(Eclipse) and Real Device
+******
+1.Type of appications
+************************
+1.Native App  : Only runs on Mobile (Ex. What's Up)
+2.WebApp/View : Mobile Web
+3.Hybrid App : workd on Both (Ex: Amazon, FlipKart etc)
+
+2.SetUp
+*******
+1. SetUp Java(JDK) and set environment variables
+   (From: https://www.oracle.com/technetwork/java/jdk8-downloads-2133151.html
+                                                  download :Windows x64)
+2. Download Android SDK and set Environment variabls
+   (From:https://developer.android.com/studio
+    download : android-studio-ide-182.5264788-windows.exe)
+    SetEnvironmental variables
+   **************************
+   ANDROID_HOME : C:\Users\pmanala\AppData\Local\Android\Sdk
+   ANDROID_PLATFORM_TOOLS : C:\Users\pmanala\AppData\Local\Android\Sdk\platform-tools
+   ANDROID_TOOLS : C:\Users\pmanala\AppData\Local\Android\Sdk\tools
+   Go to CMD
+   *********
+   >>android
+   >>adb
+   >>adb devices
+
+**********************
+3. SetUp Appium Server (Version 1.10.0)(On Port 4723)
+   (From: https://github.com/appium/appium-desktop/releases/tag/v1.10.0
+                        download: appium-desktop-setup-1.10.0.exe)
+   Set Paths in Appium 
+   1.ANDROID_HOME : C:\Users\pmanala\AppData\Local\Android\Sdk
+   2.JAVA_HOME : 
+
+************************
+
+4. Setup Eclipse for Coding
+
+**************************
+
+5. Download and Add required jar files
+   1.Selenium
+        <dependency>
+	<groupId>org.seleniumhq.selenium</groupId>
+	<artifactId>selenium-java</artifactId>
+	<version>3.14.0</version>
+	</dependency>
+   2.Appium
+       <dependency>
+       <groupId>io.appium</groupId>
+       <artifactId>java-client</artifactId>
+       <version>4.1.2</version>
+       </dependency>
+   3.guava
+       <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+       <dependency>
+       <groupId>com.google.guava</groupId>
+       <artifactId>guava</artifactId>
+       <version>23.0</version>
+</dependency>
+
+********************************
+6. GenyMotion (Free,Personal use) (From:https://www.genymotion.com/fun-zone/
+                                   download : Download Genymotion Personal Edition)
+
+   1.Emulate for android device
+   2.Simulate 3000+ virtual device cofiguration
+   3.Lightweight and Fast
+   4.Provides AWS options as well
+
+   5.UserName:TestingWorldindia-Praneeth
+     praneethbindu@gmail.com
+     password:123456789
+**************************
+
+7. PDANET+ download 
+   (From : http://pdanet.co/a/)
+    Version 5.10 Installer
+
+**************************
+
+8. Developer Mode and USB Debugging settings in Android device
+ 
+   1.Go to Mobile Setting --> About Phone ---> Click 7 times on Build Number/Model Version 
+   2.Go to back i.e settings --> Developer Options --> turn ON debugging mode
+   3.Attach USB Cable 
+
+*************************
+
+9.Selenium Code
+   
+package com.appium.selenium;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.Platform;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+
+public class AppiumDemo {
+
+	
+	@Test
+	public void test1() throws MalformedURLException {
+		
+		DesiredCapabilities cap = DesiredCapabilities.android();
+		
+		cap.setCapability("deviceName", "d39a928");
+		cap.setCapability(MobileCapabilityType.BROWSER_NAME, BrowserType.CHROME);
+		
+		//cap.setCapability(MobileCapabilityType.PLATFORM, Platform.ANDROID);
+		
+		cap.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
+		
+		cap.setCapability(MobileCapabilityType.DEVICE_NAME, "My Phone");
+		
+		cap.setCapability(MobileCapabilityType.VERSION, "8.1.0");
+		
+		URL url=new URL("http://0.0.0.0:4723/wd/hub"); //Appium i.p address
+		
+		WebDriver driver=new AndroidDriver(url,cap);
+		
+		driver.get("http://www.facebook.com");
+	}
+}
+
+*********************
+10.
+1.Download .APK file from : https://androidapksfree.com/ ---> select any one and click on apk download 
+2.Install it on device 
+  open cmd on .apk folder and cd to that folder
+  >>adb install com.facebook.katana_v210.0.0.43.119-143667885_Android-4.1.apk
+3.it istalls facebook on mobile device 
+
+4.Go to C:\Users\pmanala\AppData\Local\Android\Sdk\tools\bin 
+  and click on uiautomatorviewer it opens cmd and viewer click on screenshot icon
+  It gives the
+  "appPackage"= "com.facebook.katana"
+  
+5. Open facebook app in mobile devive  
+   Go to CMD >> adb shell
+             >>dumpsys window windows | grep -E ‘mCurrentFocus’
+
+   "activityName" = "com.facebook.account.login.activity.SimpleLoginActivity" 
+
+Ex: Selenium Code
+*******************
+package com.appium.selenium;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.annotations.Test;
+
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+
+public class AppiumApp {
+
+	
+	@Test
+	public void test1() throws MalformedURLException, InterruptedException {
+		
+		 /*File classpathRoot = new File(System.getProperty("user.dir"));
+		 File appDir = new File(classpathRoot, "/Apps/Amazon/");
+		 File app = new File(appDir, "com.amazon.mShop.android.shopping.apk");*/
+		
+		 File f=new File(System.getProperty("user.dir")+"/Apps/Amazon/com.amazon.mShop.android.shopping.apk");
+		 
+		 DesiredCapabilities capabilities = new DesiredCapabilities();
+		 capabilities.setCapability(CapabilityType.BROWSER_NAME, "");
+		 capabilities.setCapability("deviceName", "d39a928");
+		 capabilities.setCapability("platformVersion", "8.1.0");
+		 capabilities.setCapability("platformName", "Android");
+	     capabilities.setCapability("app", f.getAbsolutePath());
+	 	 capabilities.setCapability("appPackage", "com.amazon.mShop.android.shopping");
+		 capabilities.setCapability("appActivity", "com.amazon.mShop.home.HomeActivity");
+		
+	     URL url=new URL("http://0.0.0.0:4723/wd/hub");
+		
+		  WebDriver driver=new AndroidDriver(url,capabilities);
+		 driver.manage().timeouts().implicitlyWait(80, TimeUnit.SECONDS);
+		 Thread.sleep(10000);
+		 driver.quit();
+	}
+	
+}
+
+
+  
+******************************
+Native Application Different types of Locators
+*********************************************
+1.ID
+2.AccessibilityID
+3.ClassName
+4.Name
+5.Xpath
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

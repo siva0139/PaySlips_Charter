@@ -1,0 +1,276 @@
+https://reqres.in/
+
+https://jsonlint.com/
+
+
+API  :: Application Programming Interface
+XML  :: Extensible markup language
+JSON :: Java Script Object Notation --> 
+
+         The data communication between the client and server is performd by JSON formate 
+         Obj to JSON is called Marshelling
+         JSON to Obj is called unMarshelling
+
+URI  :: Uniform Resourse Intigration
+
+HTTP :: Hyper Text Transfer Protocal
+
+REST :: Representational STate Transfer
+SOAP :: Simple Object Asscess Protocal
+
+WSDL  : WebSercise Description Language
+POJO  : Plain old Java Object
+
+Tools
+-------
+SOAP UI : SOAP/REST
+PostMan : Only REST
+REST Client/Advance REST Client : REST
+HTTP Client : Only REST
+REST Assured : Only REST
+Soap Client : Only Soap
+REST Client : Only REST
+JMETER : REST
+***************************
+
+Status Codes
+
+
+200-OK
+201-Created
+204-No Content
+400-Bad Request
+401-Unathorizarion 
+404-Not Found
+409-Conflict
+500-Internal Server Error
+
+********************************
+Rest-Assured is an open source java Domain Specific Language(DSL)
+REST
+
+1.Get
+2.PUT
+3.POST
+4.Delete
+5.Patch
+6.Head
+7.Options
+
+******************************************
+Install JSON SErver
+
+1. cmd--> npm install -g json-server
+2. cmd--> json-server --watch db.json
+
+http://localhost:3000/posts
+http://localhost:3000/comment
+http://localhost:3000/profile
+
+**********************************************************
+
+URI--> https://reqres.in/api/users?page=2
+? --> Query parameter--> is used to filter the data
+
+https://reqres.in/api/user/2
+/---> path parameter--> is used to find the specific information
+
+******************************************************************
+
+EX:
+
+package com.automation.webservicesRestAssured;
+
+import org.json.JSONObject;
+import org.testng.annotations.Test;
+
+import com.jayway.restassured.RestAssured;
+import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
+import com.jayway.restassured.specification.RequestSpecification;
+
+public class CRUD {
+
+	/*@Test
+	public void getData() {
+		
+         Response res = RestAssured.get("http://localhost:3000/posts");
+		 int code=res.getStatusCode();
+		 System.out.println("The Status Code is :"+code);
+		 
+		 String data = res.asString();
+		 
+		 System.out.println("The Data is :"+data);
+		 
+		 System.out.println("The Time is :"+res.getTime());
+		 
+	}*/
+	
+	/*@Test
+	public void postData() {
+		 
+		           Posts post= new Posts();
+		           
+		           post.setAuthor("praneeth");
+		           post.setId("5003");
+		           post.setTitle("WebSercicesPraneeth");
+		           
+		           RequestSpecification req = RestAssured.given().contentType(ContentType.JSON).body(post); or  RequestSpecification request = RestAssured.given().header("Content-Type","application/json").body(post);
+		           Response res = req.post("http://localhost:3000/posts");
+		           System.out.println("The Status Code is :"+res.getStatusCode());
+		
+		
+		Posts post= new Posts();
+		post.setAuthor("PRaneethBinduManala");
+		post.setId("13112016");
+		post.setTitle("Marriage");
+		
+		RequestSpecification req = RestAssured.given().contentType(ContentType.JSON).body(post);
+		Response res = req.post("http://localhost:3000/posts");
+		System.out.println("The Status code is :"+res.getStatusCode());           
+	}
+	*/
+	/*@Test
+	public void deleteData() {
+		
+		Response res = RestAssured.delete("http://localhost:3000/posts/5003");
+		System.out.println("The Status Code is :"+res.getStatusCode());
+	}*/
+	@Test
+	public void putData() {
+         
+		 Posts post= new Posts();
+         post.setAuthor("PRaneethBinduManala");
+         post.setId("13112016");
+         post.setTitle("MarriageDay");
+         
+		 RequestSpecification request = RestAssured.given().contentType(ContentType.JSON).body(post); or  RequestSpecification request = RestAssured.given().header("Content-Type","application/json").body(post);
+		
+		 Response response = request.put("http://localhost:3000/posts/13112016");
+		 
+		int statusCode=response.getStatusCode();
+		 System.out.println("The Status Code is :"+statusCode);
+	}
+}
+*****************************************************************
+package com.automation.webservicesRestAssured;
+
+import com.automation.weatherAPI_WebServices.Info;
+
+public class Posts {
+	public String id;
+	public String title;
+	public String author;
+	public  Info[] info;
+	
+	
+	public Info[] getInfo() {
+		return info;
+	}
+	public void setInfo(Info[] info) {
+		this.info = info;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id=id;
+	}
+	
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+}
+*************************************************************************************************
+ package com.automation.weatherAPI_WebServices;
+
+public class Info {
+
+	
+	private String email;
+	private String address;
+	private String phone;
+	
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
+}
+*********************************
+package com.automation.weatherAPI_WebServices;
+
+import org.testng.annotations.Test;
+
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+
+public class CRUD_Advance {
+
+	
+	
+	@Test
+	public void post_Array() {
+		
+		Info info1=new Info();
+		info1.setAddress("Gundala");
+		info1.setEmail("praneeth@gmail.com");
+		info1.setPhone("9491018111");
+		
+		Info info2=new Info();
+		info2.setAddress("Gundala Mandal");
+		info2.setEmail("praneethkumar@gmail.com");
+		info2.setPhone("9491018222");
+		
+		
+		Posts post= new Posts();
+		post.setId("1002");
+		post.setTitle("SeleniumAutomation");
+		post.setAuthor("WebServices");
+		post.setInfo(new Info[] {info1,info2});
+		
+		Response res = RestAssured.given().when().contentType(ContentType.JSON)
+		           .body(post)
+		           .post("http://localhost:3000/posts");
+		
+		           long time = res.then().extract().time();
+		
+		
+		System.out.println("The Status Code is :"+res.getStatusCode());
+		System.out.println("The Data is :"+res.asString());
+		System.out.println("The Responce Time is :"+time);
+		//OR
+		System.out.println("The Responce Time is :"+res.getTime());
+	}
+}
+*****************************************************************************************************  

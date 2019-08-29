@@ -1,0 +1,87 @@
+<html>
+<head>
+<body>
+
+<h1 style="color:DodgerBlue;">ConcertAutomation</h1>
+<h1 style="font-size:60px;">ConcertAutomation</h1>
+<h1 style="color:DodgerBlue;">DigitalAutomation</h1>
+<h1 style="font-size:40px;">DigitalAutomation</h1>
+
+<p style="color:Tomato;">Cox</p>
+<p style="color:Tomato;">Xfinity</p>
+<p style="color:Tomato;">SuddenLink</p>
+</body>
+</html>
+****************************
+
+<html>
+<head>
+<body>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">ConcertAutomation</h1>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">DigitalAutomation</h1>
+
+
+<p style="color:Tomato;">Cox</p>
+<p style="color:Tomato;">Xfinity</p>
+<p style="color:Tomato;">SuddenLink</p>
+</body>
+</html>
+******************************
+<html>
+<head>
+<body>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">ConcertAutomation</h1>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">DigitalAutomation</h1>
+
+
+<p style="color:Tomato;" style="font-size:35px;">Cox</p>
+<p style="color:Tomato;" style="font-size:30px;">Xfinity</p>
+<p style="color:Tomato;" style="font-size:20px;">SuddenLink</p>
+<img src="img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
+</body>
+</html>
+
+*****************************************
+<html>
+<head>
+<body>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">ConcertAutomation</h1>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">DigitalAutomation</h1>
+
+
+<p style="color:Tomato;" style="font-size:35px;">Cox</p>
+<p style="color:Tomato;" style="font-size:30px;">Xfinity</p>
+<p style="color:Tomato;" style="font-size:20px;">SuddenLink</p>
+<img src="img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
+
+ <iframe src="demo_iframe.htm" style="height:200px;width:300px;"></iframe> 
+<h1 style="color:DodgerBlue;" style="font-size:60px;">ConcertAutomation</h1>
+
+<h1 style="color:DodgerBlue;" style="font-size:60px;">DigitalAutomation</h1>
+
+
+<p style="color:Tomato;" style="font-size:35px;">Cox</p>
+<p style="color:Tomato;" style="font-size:30px;">Xfinity</p>
+<p style="color:Tomato;" style="font-size:20px;">SuddenLink</p>
+<img src="img_chania.jpg" alt="Flowers in Chania" width="460" height="345">
+
+<iframe src="demo1_iframe.htm" name="iframe_a"></iframe>
+
+<p><a href="https://www.w3schools.com" target="iframe_a">W3Schools.com</a></p> 
+
+
+<iframe src="demo2_iframe.htm" name="iframe_b"></iframe>
+
+<p><a href="https://www.google.com" target="iframe_a">google.com</a></p>
+
+
+
+</body>
+</html>
+**************************************************

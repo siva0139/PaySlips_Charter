@@ -1,0 +1,184 @@
+WeatherAPI Key : 8a79bc6d1d2be0a5b9ff2350636574d8
+
+https://reqres.in/
+http://jsonviewer.stack.hu/
+https://jsonlint.com/
+https://jsonpath.curiousconcept.com/
+
+
+API  :: Application Programming Interface
+XML  :: Extensible markup language
+JSON :: Java Script Object Notation
+URI  :: Uniform Resourse Intigration
+
+HTTP :: Hyper Text Transfer Protocal
+
+REST :: Representational STate Transfer
+SOAP :: Simple Object Asscess Protocal
+
+WSDL  : WebSercise Description Language
+
+Tools
+-------
+SOAP UI : SOAP/REST
+PostMan : Only REST
+REST Client/Advance REST Client : REST
+HTTP Client : Only REST
+REST Assured : Only REST
+Soap Client : Only Soap
+REST Client : Only REST
+JMETER : REST
+***************************
+
+Status Codes
+
+
+200-OK
+201-Created
+204-No Content
+400-Bad Request
+401-Unathorizarion 
+404-Not Found
+409-Conflict
+500-Internal Server Error
+502-Bad GateWay
+
+********************************
+Rest-Assured is an open source java Domain Specific Language(DSL)
+REST
+
+1.Get
+2.PUT
+3.POST
+4.Delete
+
+5.Patch
+6.Head
+7.Options
+
+******************************************
+Install JSON SErver
+
+1. cmd--> npm install -g json-server
+2. cmd--> json-server --watch db.json
+
+http://localhost:3000/posts
+http://localhost:3000/comments
+http://localhost:3000/profile
+
+*****************************************
+SOAP
+*****
+
+.XML Formate
+----------------
+
+Request:
+
+<addition>
+ <firstNumber>2</firstNumber>
+ <secondNo>2</secondNo>
+
+</addition>
+-------------------
+Responce
+
+<sum>
+  <addNo>4</addNo>
+</sum>
+--------------------
+REST
+*****
+1.Resource
+2.URI -- Uniform Resource Identifier
+3.HTTP Methods -- GET,POST,PUT , Delete , Patch
+4.Stateless -- All client-server communictions are stateless(Improve Web SErvice performance)
+5.Cashing -- Happens at client side
+6.Layring-- muktiple layers can exist between client and server
+
+
+******************
+1.Sheethal Singh
+2.Rahul Rathore
+
+
+*/************************************************************
+/*@Test
+	public void getData() {
+	
+		Response res = RestAssured.given().header("Content-Type","application/json").get("http://localhost:3000/posts");
+		System.out.println("The data is "+res.asString());
+		System.out.println("The code is "+res.getStatusCode());
+		
+	}*/
+	
+	/*@Test
+	public void postData() {
+		
+		JSONObject json = new JSONObject();
+		json.put("id", "5552");
+		json.put("title", "Cucumber-Selenium");
+		json.put("author", "Praneeth-Cucumber");
+		
+		Response res = RestAssured.given().body(json.toJSONString()).header("Content-Type","application/json").post("http://localhost:3000/posts");
+		System.out.println("The new Added data "+res.asString());
+		System.out.println("The status code "+res.getStatusCode());
+		
+		
+	}*/
+	
+	/*@Test
+	public void putData() {
+		
+		JSONObject json= new JSONObject();
+		json.put("id", "5552");
+		json.put("title", "Cucumber-Selenium-3.0");
+		json.put("author", "Praneeth-Cucumber-3.0");
+		
+		Response res=RestAssured.given().body(json.toJSONString()).header("Content-Type","application/json").put("http://localhost:3000/posts/5552");
+		System.out.println("The new Added data "+res.asString());
+		System.out.println("The status code "+res.getStatusCode());
+	}*/
+	
+	/*@Test
+	public void deleteData() {
+		
+		Response res=RestAssured.given().header("Content-Type","application/json").delete("http://localhost:3000/posts/5552");
+		System.out.println("The new Added data "+res.asString());
+		System.out.println("The status code "+res.getStatusCode());
+		
+	}*/
+	
+	@Test
+	public void postArrayData() {
+		
+		InfoPractice info1 = new InfoPractice();
+		info1.setAddress("Uppal");
+		info1.setEmail("pmanala@charterglobal.com");
+		info1.setPhone("9100108111");
+		
+		InfoPractice info2 = new InfoPractice();
+		info2.setAddress("Uppal-410");
+		info2.setEmail("pmanala@charterglobal222.com");
+		info2.setPhone("9100108222");
+		
+		DemoPost practice = new DemoPost();
+		
+		practice.setAuthor("Praneeth-Cucumber");
+		practice.setId("6662");
+		practice.setTitle("Selenium-Cucumber-Demo");
+		practice.setInfo(new InfoPractice[] {info1,info2});
+		
+		
+		Response res=RestAssured.given().body(practice).header("Content-Type","application/json").post("http://localhost:3000/posts");
+		System.out.println("The new Added data "+res.asString());
+		System.out.println("The status code "+res.getStatusCode());
+	
+	}
+	
+****************************************************************
+
+
+
+
+   

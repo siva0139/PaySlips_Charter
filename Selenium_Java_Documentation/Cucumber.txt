@@ -1,0 +1,490 @@
+1.Feature Files
+***************
+1.Normal Feature File
+**********************
+Feature: Verify CRM application login
+
+Scenario: Verifing CRM login
+Given enter valid url
+When enter userName and Password
+Then click on Signin button
+Then close the browser
+
+**************************************************
+Feature: Login functionality of CRM application
+
+Scenario: verify login function
+Given launch browser
+When enter url
+Then enter "praneethmanala" and "praneethmanala"  
+Then close the browser
+**************************************************
+2.Feature File with example keyword
+***********************************
+Feature: Verify CRM application login
+
+Scenario Outline:: Verifing CRM login
+Given select "<browser>" enter valid url
+When enter "<userName>" and "<Password>"
+Then click on Signin button
+Then close the browser
+Examples:
+|browser|userName|Password|
+|chrome|praneeth|praneeth|
+|firefox|praneeth|praneeth|
+
+****************************************************
+3.Feature File with Map(With out example keyword)
+******************************
+Feature: Verify CRM application login
+
+Scenario: Verifing CRM login
+Given enter valid url
+When enter userName and Password
+|username|password|
+|praneeth|praneeth|
+Then click on Signin button
+Then close the browser
+
+***********************************************************
+4.FeatureFile with tags
+***********************
+Feature: Verify CRM application login
+
+@SanityTest
+Scenario: Verifing CRM login
+Given enter valid url
+|browser|
+|chrome|
+When enter userName and Password
+|username|password|
+|praneeth|praneeth|
+Then click on Signin button
+Then close the browser
+
+@RegressionTest
+Scenario: Verifing CRM login
+Given enter valid url
+|browser|
+|firefox|
+When enter userName and Password
+|username|password|
+|praneethmanala|praneethmanala|
+Then click on Signin button
+Then close the browser
+
+@SanityTest @RegressionTest
+Scenario: Verifing CRM login
+Given enter valid url
+|browser|
+|chrome|
+When enter userName and Password
+|username|password|
+|praneeth|praneeth|
+Then click on Signin button
+Then close the browser
+
+**************************************************************************************************************************
+2.STepDefination
+******************
+1.StepDefination with normal Feature File
+********************************************
+/*package stepDefinitions;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.DataTable;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class CRM_Tags {
+	
+	 WebDriver driver;
+		
+	    @Given("^enter valid url$")
+	    public void enter_valid_url(DataTable browsedata) {
+	    	for(Map<String,String> tbrowsedata:browsedata.asMaps(String.class, String.class)) {
+	    		if(tbrowsedata.get("browser").equals("chrome")) {
+	    	    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+	    	    	driver = new ChromeDriver();
+	    	    	}
+	    		else if(tbrowsedata.get("browser").equals("firefox")) {
+	    	    	System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/geckodriver.exe");
+	    	    	driver= new FirefoxDriver();
+	    		}
+	    	}
+	    	
+			driver.manage().window().maximize();
+			driver.get("https://www.freecrm.com/index.html");
+	    }
+	    
+		@When("^enter userName and Password$")
+		public void enter_userName_and_Password(DataTable dealData) throws InterruptedException {
+			
+			for(Map<String , String> tdata:dealData.asMaps(String.class, String.class)) {
+				
+				driver.findElement(By.name("username")).sendKeys(tdata.get("username"));
+				Thread.sleep(2000);
+				driver.findElement(By.name("password")).sendKeys(tdata.get("password"));
+				Thread.sleep(2000);
+			}
+			
+			
+		}
+		
+		@Then("^click on Signin button$")
+		public void click_on_Signin_button() {
+			
+			driver.findElement(By.xpath(".//*[@type='submit']")).click();
+		}
+		
+		@Then("^close the browser$")
+		public void close_the_browser() {
+			
+			driver.close();
+		}
+}
+*/
+**************************************************************************
+2.Step Defination with Example keyword 
+***************************************
+/*package stepDefinitions;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class CRM_ExampleKeyword {
+
+WebDriver driver;
+	
+    @Given("^select \"(.*)\" enter valid url$")
+    public void select_browser_enter_valid_url(String browser) {
+    	
+    	if(browser.equals("chrome")) {
+    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+    	driver = new ChromeDriver();
+    	}
+    	else if(browser.equals("firefox")){
+    	System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/geckodriver.exe");
+    	driver= new FirefoxDriver();
+    	}
+		driver.manage().window().maximize();
+		driver.get("https://www.freecrm.com/index.html");
+    }
+    
+	@When("^enter \"(.*)\" and \"(.*)\"$")
+	public void enter_userName_and_Password(String username,String password) throws InterruptedException {
+		driver.findElement(By.name("username")).sendKeys(username);
+		Thread.sleep(1000);
+		driver.findElement(By.name("password")).sendKeys(password);
+		Thread.sleep(1000);
+	}
+	
+	@Then("^click on Signin button$")
+	public void click_on_Signin_button() {
+		
+		driver.findElement(By.xpath(".//*[@type='submit']")).click();
+	}
+	
+	@Then("^close the browser$")
+	public void close_the_browser() {
+		
+		driver.close();
+	}
+	
+	
+	
+}
+*/
+********************************************************************************************
+3.StepDefinitions with Map Interface
+*****************************************
+/*package stepDefinitions;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.DataTable;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class CRM_DealMaps {
+
+	
+   WebDriver driver;
+	
+    @Given("^enter valid url$")
+    public void enter_valid_url() {
+    	
+    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+    	driver = new ChromeDriver();
+    
+    	System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/geckodriver.exe");
+    	driver= new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.freecrm.com/index.html");
+    }
+    
+	@When("^enter userName and Password$")
+	public void enter_userName_and_Password(DataTable dealData) throws InterruptedException {
+		
+		for(Map<String , String> tdata:dealData.asMaps(String.class, String.class)) {
+			
+			driver.findElement(By.name("username")).sendKeys(tdata.get("username"));
+			Thread.sleep(2000);
+			driver.findElement(By.name("password")).sendKeys(tdata.get("password"));
+			Thread.sleep(2000);
+		}
+		
+		
+	}
+	
+	@Then("^click on Signin button$")
+	public void click_on_Signin_button() {
+		
+		driver.findElement(By.xpath(".//*[@type='submit']")).click();
+	}
+	
+	@Then("^close the browser$")
+	public void close_the_browser() {
+		
+		driver.close();
+	}
+}
+*/
+***************************************************************************
+4.StepDefinition with Tags
+****************************
+/*package stepDefinitions;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import cucumber.api.DataTable;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
+public class CRM_Tags {
+	
+	 WebDriver driver;
+		
+	    @Given("^enter valid url$")
+	    public void enter_valid_url(DataTable browsedata) {
+	    	for(Map<String,String> tbrowsedata:browsedata.asMaps(String.class, String.class)) {
+	    		if(tbrowsedata.get("browser").equals("chrome")) {
+	    	    	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/Drivers/chromedriver.exe");
+	    	    	driver = new ChromeDriver();
+	    	    	}
+	    		else if(tbrowsedata.get("browser").equals("firefox")) {
+	    	    	System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/Drivers/geckodriver.exe");
+	    	    	driver= new FirefoxDriver();
+	    		}
+	    	}
+	    	
+			driver.manage().window().maximize();
+			driver.get("https://www.freecrm.com/index.html");
+	    }
+	    
+		@When("^enter userName and Password$")
+		public void enter_userName_and_Password(DataTable dealData) throws InterruptedException {
+			
+			for(Map<String , String> tdata:dealData.asMaps(String.class, String.class)) {
+				
+				driver.findElement(By.name("username")).sendKeys(tdata.get("username"));
+				Thread.sleep(2000);
+				driver.findElement(By.name("password")).sendKeys(tdata.get("password"));
+				Thread.sleep(2000);
+			}
+			
+			
+		}
+		
+		@Then("^click on Signin button$")
+		public void click_on_Signin_button() {
+			
+			driver.findElement(By.xpath(".//*[@type='submit']")).click();
+		}
+		
+		@Then("^close the browser$")
+		public void close_the_browser() {
+			
+			driver.close();
+		}
+}
+*/
+***********************************************************************************************************
+3.Test Runner with Junit
+*************************
+package runner;
+
+import org.junit.runner.RunWith;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
+
+@RunWith(Cucumber.class)
+@CucumberOptions(features="/Users/pmanala/workspace_New/automationCucumber/src/test/java/featuresfiles/CRM_Tags.feature",
+                 glue= {"stepDefinitions"},
+                 plugin= {"pretty:CRMReports/pretty/prettyreport.txt",
+              		   "json:CRMReports/json/jsonreport.json",
+              		   "junit:CRMReports/junit/junitreport.xml",
+              		   "usage:CRMReports/usage/usagereport.json",
+              		   "html:CRMReports/html/htmlreport.html"},
+                 tags= {"~@SanityTest,@RegressionTest"}, 
+                 dryRun=false,
+                 monochrome=true)
+public class FreeCRM {
+
+	 //OR   tags= ={"@SanityTest,@RegressionTest"} -- Executes  SanityTest Scenarios and RegressionTest Scenarios inividually
+	 //And  tags= ={"@SanityTest","@RegressionTest"}-- Executes the test cases having both SanityTest and RegressionTest tags
+	//Not   tags= ={"~@SanityTest,@RegressionTest"} -- Not executes SanityTests tag
+	
+	//Hooks --> Defines the precondition-->@Before and postcondition-->@After
+}
+********************************************************************************************************
+4.Test Runner With TestNG
+**************************
+package runner;
+
+import cucumber.api.CucumberOptions;
+import cucumber.api.testng.AbstractTestNGCucumberTests;
+
+// http://github.com/damianszczepanik/cucumber-reporting/
+//@RunWith(Cucumber.class)
+@CucumberOptions(features="/Users/pmanala/workspace_New/automationCucumber/src/test/java/featuresfiles/CRM.feature" ,
+                 glue= {"stepDefinitions"},
+                 plugin= {"pretty:target/cucumber-pretty.txt",
+                		 "html:cucumberreports/cucumber-html-report" ,
+                		 "json:cucumberreports/cucumber-json-report/cucumber.json",
+                		 "junit:cucumberreports/cucuber-junit-xml/junit.xml",
+                		 "usage:cucumberreports/cucumber-usage-report/usage.json"},
+                 dryRun=false,
+                 monochrome=true,
+                 strict=true
+                )
+public class TestRunnerUsingTestNG extends AbstractTestNGCucumberTests{
+	
+	
+}
+********************************************************************************************************
+5.Execute Cucumber with TestNG.xml
+*************************************
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Concert att CallFlows With CheckOut" parallel="tests" thread-count="4">
+	<test name="attCallFlowWithSaleLoad1">
+		<classes>
+			<class name="runner.TestRunnerUsingTestNG">
+				
+			</class>
+		</classes>
+	</test>
+</suite>
+***********************************************************************************************************
+6.Cucumber Integration with PageObjectModel
+*********************************************
+/*package stepDefinition;
+
+import java.util.Map;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+
+import com.automation.accelerators.Base;
+import com.automation.accelerators.DealPageMethods;
+
+import cucumber.api.DataTable;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import junit.framework.Assert;
+
+public class StepDefination_PageObjectModel {
+
+    
+	WebDriver driver;
+
+	Base base=new Base();
+	DealPageMethods dpm=new DealPageMethods();
+	
+  @Given("^User is already in login page$")
+   public void user_is_already_in_login_page() throws Throwable {
+	
+	base.setUp();
+	base.enterURL();
+	
+  }
+
+	@When("^Title of login page is FreeCRM$")
+	public void title_of_login_page_is_FreeCRM() throws Throwable {
+		base.compareTitle();
+	}
+
+	@Then("^user enters username and password$")
+	public void user_enters_username_and_password(DataTable credentials) throws Throwable {
+	
+		base.enterUnamePass(credentials);
+	}
+
+	
+	@Then("^user clicks on Login button$")
+	public void user_clicks_on_Login_button() throws Throwable {
+		
+	base.clickLoginBtn();
+	}
+
+	
+	
+	@Then("^user is an home page$")
+	public void user_is_an_home_page() throws Throwable {
+	   
+	base.homePage();
+		
+	}
+
+	@Then("^moves to new deal page$")
+	public void moves_to_new_deal_page() throws Throwable {
+	   
+		dpm.dealPage();
+		
+	}
+
+	@Then("^user enters deal details$")
+	public void user_enters_deal_details(DataTable dealdata) throws Throwable {
+		
+		dpm.dealDetails(dealdata);
+		
+	}
+	@Then("^close the browser$")
+	public void close_the_browser() throws Throwable {
+		
+		base.exit();
+	}
+	
+
+}
+*/

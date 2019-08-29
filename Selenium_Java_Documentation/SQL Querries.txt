@@ -1,0 +1,108 @@
+1.Select
+************
+SELECT * FROM Customers;
+SELECT City, postalcode FROM Customers;
+************************************************************************************************
+2.Distinct
+***********
+SELECT Distinct City FROM Customers;
+************************************************************************************************
+3.Where , And ,or , not
+***********************
+SELECT * FROM Orders where orderid=10248;
+SELECT * FROM Orders where shipperid=1;
+SELECT * FROM Products where productName='chang';
+SELECT * FROM Products where productName='chang' and price=19;
+SELECT * FROM Products where productname='chang' or supplierid=1 or price=18;---shows more records
+SELECT * FROM Products where productname='chang' and supplierid=1 and price=19; -- shows only one record
+SELECT * FROM Customers WHERE Country='Germany' AND (City='Berlin' OR City='München'); 
+SELECT * FROM Customers WHERE not country='uk' and not country='usa' --shows remaining countries
+
+*************************************************************************************************
+4. Order By
+***********
+SELECT * FROM orders order by  customerid asc
+SELECT * FROM orders order by  customerid desc
+**************************************************************************************************
+5.Insert Into
+***************
+INSERT INTO Customers (CustomerName, ContactName, Address, City, PostalCode, Country)
+VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway');
+****************************************************************************************************
+6.Is Null
+***********
+SELECT LastName, FirstName, Address FROM Persons
+WHERE Address IS NULL;
+****************************************************************************************************
+7.TOP
+********
+select id from iam_users order by id desc limit 1 --securends
+SELECT TOP 3 * FROM Customers;
+select top 5 percent * from customers
+SELECT top 3 * FROM OrderDetails order by quantity desc;
+****************************************************************************************************
+8.Count(),Avg() and sum()
+*************************
+select count(customerid) as TotalNoofcustomers from customers
+SELECT count(orderID) as TotalNoOfRecords FROM Orders;
+SELECT sum(quantity) as TotalnoOfOrders FROM OrderDetails;
+SELECT avg(price) as AvaragePrice FROM Products;
+****************************************************************************************************
+9.LIKE
+******
+select user_id from iam_users where user_id like 'g%' -- securends
+SELECT * from customers where country like 'u%' -- shows country starts with u(uk,usa)
+SELECT * from customers where country like '%rk' --shows country ends with rk(Denmark)
+SELECT * from customers where customername like '%otto%' -- shows customername with middle otto
+SELECT * from customers where customername like '_o%' -- 2nd letter contains o
+SELECT * from customers where customername like 'F%B'-- word starts with F and ends with B
+SELECT * from customers where customername not like 'F%B' -- word not starts with F and ends with B
+******************************************************************************************************
+10.IN
+*****
+select id, email , user_id from iam_users where user_role in('Finance Manager','Project Lead')--securends
+SELECT * from customers where country in('germany','mexico','uk')
+SELECT * from customers where country not in('germany','mexico','uk') 
+SELECT * from customers where country in('usa','mexico') order by customerid desc;
+******************************************************************************************************
+11.Between
+**********
+SELECT * FROM Products where price between 20 and 25;
+SELECT * FROM Products where price not between 20 and 25;
+SELECT * FROM Products WHERE (Price BETWEEN 10 AND 20) AND NOT CategoryID IN (1,2,3);
+******************************************************************************************************
+12.Create Table
+****************
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+
+*******************************************************************************************************
+13.Drop Table
+**************
+Drop table tableName; -- It deletes the table from database permanantly
+Note: Be careful before dropping a table. Deleting a table will result in loss of complete information stored in the table!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

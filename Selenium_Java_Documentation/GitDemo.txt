@@ -1,0 +1,92 @@
+
+	/*Git(2.18 v) and GitHub (Git != GitHub)
+	 * 
+	 * 1.Git : Version Control system(VCS)
+	 * 2.to track changes in files/folders
+	 * 3.to collaborate 
+	 * 4.It is free and open source system
+	 * Types
+	 * 1.Centralized Version Control
+	 * 2.Distributed Version Control--Git
+	 * 
+	 * GitHub
+	 * -------
+	 * 1.Website to upload your repositories online
+	 * 2.provides backup
+	 * 3.provides visual interface to your repositories
+	 * 4.makes collaboration easier
+	 * 
+	 * 
+	 * 2. Install Git
+	 * ---------------
+	 * 1. cmd> git -version
+	 * 2. Download git from google
+	 * 3. add your project to git
+	 * 4.commands
+	 * 
+	 *    1.git config --global user.email "praneethmanala@gmail.com"
+	 *    1.git config --global user.name "PraneethKumarManala"
+	 *    1. > git --version
+	 *    2. Go to folder directory and >git init(.git file will create in directory)
+	 *    3. > git status (Right click on directory and go to GitBashHeare)
+	 *    4. > git add .
+	 *    5. > git commit -m .
+	 *    6. > git remote add origin https://github.com/PraneethKumarManala/CNG_Allconnect.git
+	 *    7. > git push -u origin master
+	 *    8. > git log
+	 *    9. > git --help
+	 *    
+	 * 3. Branching and Merging
+	 * ------------------------------
+	 * 1. Create Branch
+	 *    cmd> git branch MyNewBranch
+	 * 2. Checkout branch
+	 *    cmd> git checkout MyNewBranch
+	 * 3.      git add .
+	 *         git commit -m .
+	 *         git push -u origin MyNewBranch
+	 *         git merge MyNewBranch
+	 *         git push -u origin master
+	 * 4.  Delete branch
+	 *      cmd > git branch -d MyNewBranch (This will delete from local)
+	 *      cmd > git push origin --delete MyNewBranch (Delete from remote)
+	 *          
+	 * 4.Email Notifications
+	 * ----------------------
+	 * 1. Goto GitHub--> Repository-->Settings-->Integrations and Services and ass email   
+	 * 
+	 * 5.Tags
+	 * ------
+	 * 1. git checkout <branch name>
+	 *    cmd> git checkout master
+	 * 2. create tag with some name
+	 *    cmd> git tag v1.0
+	 *    cmd > git tag
+	 *    @git tag -a v1.0 -m "Ver o of .."(to create annotated tags)
+	 *    cmd > git tag -a v1.1 -m "tag for release ver 1.1"
+	 *    cmd > git tag
+	 * 3. git show v1.0
+	 *    git tag -l "v1.*"
+	 * 4. cmd> git push origin v1.0
+	 *         git push origin --tags
+	 *         git push --tags(to push all tags at once)
+	 * 5.Delete tags
+	 *   cmd> git tag -d v1.0
+	 *        git tag --delete v1.1
+	 *   Delete in remote
+	 *   cmd> git push origin -d v1.0
+	 *        git push origin --delete v1.0
+	 *                                         
+	 *         
+	 *       
+	 * 
+	 *    
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * 
+	 * */
